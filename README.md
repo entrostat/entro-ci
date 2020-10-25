@@ -28,22 +28,30 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
-* [`eci docker:build [FILE]`](#eci-dockerbuild-file)
+* [`eci docker:build`](#eci-dockerbuild)
 * [`eci hash:directory [DIRECTORY]`](#eci-hashdirectory-directory)
 * [`eci help [COMMAND]`](#eci-help-command)
 
-## `eci docker:build [FILE]`
+## `eci docker:build`
 
-describe the command here
+Checks if the Docker image has been built before and if it has not then it will build it and push it with the hash to the Docker registry
 
 ```
 USAGE
-  $ eci docker:build [FILE]
+  $ eci docker:build
 
 OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
+  -R, --dry-run                            Whether to run this live or do a dry run
+  -d, --directory=directory                (required) The path to the directory that you want to build
+  -f, --docker-file-name=docker-file-name  [default: Dockerfile] The name of the Docker file in the directory
+
+  -i, --image-name=image-name              (required) The name of the Docker image name without the version on it, eg:
+                                           entrostat/entro-ci is correct and entrostat/entro-ci:latest is not valid
+
+  -r, --registry=registry                  The registry that should be used (by default Docker Hub is used)
+
+  -t, --tag=tag                            The tag version that should be pushed to the registry so that it can be used
+                                           in automated deployments
 ```
 
 _See code: [src/commands/docker/build.ts](https://github.com/entrostat/entro-ci/blob/v0.0.0/src/commands/docker/build.ts)_

@@ -4,7 +4,7 @@
     "version": "0.0.0",
     "author": "Kerren @Kerren-Entrostat",
     "bin": {
-        "eci": "./bin/run"
+        "entro-ci": "./bin/run"
     },
     "bugs": "https://github.com/entrostat/entro-ci/issues",
     "dependencies": {
@@ -28,6 +28,7 @@
         "mocha": "^5.2.0",
         "nyc": "^14.1.1",
         "prettier": "^2.1.2",
+        "standard-version": "^9.0.0",
         "ts-node": "^8.10.2",
         "typescript": "^3.9.7"
     },
@@ -59,7 +60,9 @@
         "posttest": "eslint . --ext .ts --config .eslintrc",
         "prepack": "rm -rf lib && tsc -b && oclif-dev manifest && oclif-dev readme",
         "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
-        "version": "oclif-dev readme && git add README.md"
+        "version": "oclif-dev readme && git add README.md",
+        "release": "standard-version",
+        "release:dry-run": "standard-version --dry-run"
     },
     "types": "lib/index.d.ts"
 }
