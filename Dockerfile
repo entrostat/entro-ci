@@ -10,4 +10,4 @@ COPY . .
 
 RUN npm link
 
-ENTRYPOINT ["eci"]
+ENTRYPOINT ["entro-ci"]

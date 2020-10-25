@@ -29,6 +29,7 @@ USAGE
 # Commands
 <!-- commands -->
 * [`eci docker:build`](#eci-dockerbuild)
+* [`eci docker:build-from-file [FILE]`](#eci-dockerbuild-from-file-file)
 * [`eci hash:directory [DIRECTORY]`](#eci-hashdirectory-directory)
 * [`eci help [COMMAND]`](#eci-help-command)
 
@@ -55,6 +56,22 @@ OPTIONS
 ```
 
 _See code: [src/commands/docker/build.ts](https://github.com/entrostat/entro-ci/blob/v1.0.1/src/commands/docker/build.ts)_
+
+## `eci docker:build-from-file [FILE]`
+
+describe the command here
+
+```
+USAGE
+  $ eci docker:build-from-file [FILE]
+
+OPTIONS
+  -f, --force
+  -h, --help       show CLI help
+  -n, --name=name  name to print
+```
+
+_See code: [src/commands/docker/build-from-file.ts](https://github.com/entrostat/entro-ci/blob/v1.0.1/src/commands/docker/build-from-file.ts)_
 
 ## `eci hash:directory [DIRECTORY]`
 
