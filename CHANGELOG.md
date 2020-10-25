@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.3](https://github.com/entrostat/entro-ci/compare/v1.1.2...v1.1.3) (2020-10-25)
+
+
+### Bug Fixes
+
+* **hash:** Removed the file name from the hash output ([dadc8dc](https://github.com/entrostat/entro-ci/commit/dadc8dcf1f470792c07a1636aeb1c63d15262d26))
+
 ### [1.1.2](https://github.com/entrostat/entro-ci/compare/v1.1.1...v1.1.2) (2020-10-25)
 
 
