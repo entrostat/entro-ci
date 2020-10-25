@@ -28,28 +28,24 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
-* [`eci hello [FILE]`](#eci-hello-file)
+* [`eci hash:directory [FILE]`](#eci-hashdirectory-file)
 * [`eci help [COMMAND]`](#eci-help-command)
 
-## `eci hello [FILE]`
+## `eci hash:directory [FILE]`
 
 describe the command here
 
 ```
 USAGE
-  $ eci hello [FILE]
+  $ eci hash:directory [FILE]
 
 OPTIONS
   -f, --force
   -h, --help       show CLI help
   -n, --name=name  name to print
-
-EXAMPLE
-  $ eci hello
-  hello world from ./src/hello.ts!
 ```
 
-_See code: [src/commands/hello.ts](https://github.com/entrostat/entro-ci/blob/v0.0.0/src/commands/hello.ts)_
+_See code: [src/commands/hash/directory.ts](https://github.com/entrostat/entro-ci/blob/v0.0.0/src/commands/hash/directory.ts)_
 
 ## `eci help [COMMAND]`
 
