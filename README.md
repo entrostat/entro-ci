@@ -16,29 +16,29 @@ An automated CI tool to help with building packages and ignoring them when there
 <!-- usage -->
 ```sh-session
 $ npm install -g entro-ci
-$ entro-ci COMMAND
+$ eci COMMAND
 running command...
-$ entro-ci (-v|--version|version)
-entro-ci/1.0.0 linux-x64 node-v12.18.3
-$ entro-ci --help [COMMAND]
+$ eci (-v|--version|version)
+entro-ci/1.0.1 linux-x64 node-v12.18.3
+$ eci --help [COMMAND]
 USAGE
-  $ entro-ci COMMAND
+  $ eci COMMAND
 ...
 ```
 <!-- usagestop -->
 # Commands
 <!-- commands -->
-* [`entro-ci docker:build`](#entro-ci-dockerbuild)
-* [`entro-ci hash:directory [DIRECTORY]`](#entro-ci-hashdirectory-directory)
-* [`entro-ci help [COMMAND]`](#entro-ci-help-command)
+* [`eci docker:build`](#eci-dockerbuild)
+* [`eci hash:directory [DIRECTORY]`](#eci-hashdirectory-directory)
+* [`eci help [COMMAND]`](#eci-help-command)
 
-## `entro-ci docker:build`
+## `eci docker:build`
 
 Checks if the Docker image has been built before and if it has not then it will build it and push it with the hash to the Docker registry
 
 ```
 USAGE
-  $ entro-ci docker:build
+  $ eci docker:build
 
 OPTIONS
   -R, --dry-run                            Whether to run this live or do a dry run
@@ -54,26 +54,26 @@ OPTIONS
                                            in automated deployments
 ```
 
-_See code: [src/commands/docker/build.ts](https://github.com/entrostat/entro-ci/blob/v1.0.0/src/commands/docker/build.ts)_
+_See code: [src/commands/docker/build.ts](https://github.com/entrostat/entro-ci/blob/v1.0.1/src/commands/docker/build.ts)_
 
-## `entro-ci hash:directory [DIRECTORY]`
+## `eci hash:directory [DIRECTORY]`
 
 Generates the hash of a directory and outputs it to screen.
 
 ```
 USAGE
-  $ entro-ci hash:directory [DIRECTORY]
+  $ eci hash:directory [DIRECTORY]
 ```
 
-_See code: [src/commands/hash/directory.ts](https://github.com/entrostat/entro-ci/blob/v1.0.0/src/commands/hash/directory.ts)_
+_See code: [src/commands/hash/directory.ts](https://github.com/entrostat/entro-ci/blob/v1.0.1/src/commands/hash/directory.ts)_
 
-## `entro-ci help [COMMAND]`
+## `eci help [COMMAND]`
 
-display help for entro-ci
+display help for eci
 
 ```
 USAGE
-  $ entro-ci help [COMMAND]
+  $ eci help [COMMAND]
 
 ARGUMENTS
   COMMAND  command to show help for
