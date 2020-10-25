@@ -1,7 +1,6 @@
 import { Logger } from '../../interfaces/logger';
 import { generateDockerImageName } from './docker-image-name-builder';
 import { executeCommand } from '../execute-command';
-import * as path from 'path';
 import cli from 'cli-ux';
 
 export async function buildDockerImage(
@@ -16,7 +15,7 @@ export async function buildDockerImage(
     const localDockerImageName = generateDockerImageName(imageName, 'local-build');
     cli.action.start(`Building local image ${localDockerImageName}`);
     await executeCommand(
-        `docker build ${directory} -f ${path.join(directory, dockerFileName)} -t ${localDockerImageName}`,
+        `cd ${directory} && docker build . -f ${dockerFileName} -t ${localDockerImageName}`,
         log,
         error,
         dryRun,
