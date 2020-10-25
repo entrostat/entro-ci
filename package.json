@@ -49,7 +49,7 @@
     "main": "lib/index.js",
     "oclif": {
         "commands": "./lib/commands",
-        "bin": "eci",
+        "bin": "entro-ci",
         "plugins": [
             "@oclif/plugin-help"
         ]
