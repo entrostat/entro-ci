@@ -19,7 +19,7 @@ $ npm install -g entro-ci
 $ eci COMMAND
 running command...
 $ eci (-v|--version|version)
-entro-ci/0.0.0 linux-x64 node-v12.18.3
+entro-ci/1.0.0 linux-x64 node-v12.18.3
 $ eci --help [COMMAND]
 USAGE
   $ eci COMMAND
@@ -54,7 +54,7 @@ OPTIONS
                                            in automated deployments
 ```
 
-_See code: [src/commands/docker/build.ts](https://github.com/entrostat/entro-ci/blob/v0.0.0/src/commands/docker/build.ts)_
+_See code: [src/commands/docker/build.ts](https://github.com/entrostat/entro-ci/blob/v1.0.0/src/commands/docker/build.ts)_
 
 ## `eci hash:directory [DIRECTORY]`
 
@@ -65,7 +65,7 @@ USAGE
   $ eci hash:directory [DIRECTORY]
 ```
 
-_See code: [src/commands/hash/directory.ts](https://github.com/entrostat/entro-ci/blob/v0.0.0/src/commands/hash/directory.ts)_
+_See code: [src/commands/hash/directory.ts](https://github.com/entrostat/entro-ci/blob/v1.0.0/src/commands/hash/directory.ts)_
 
 ## `eci help [COMMAND]`
 
