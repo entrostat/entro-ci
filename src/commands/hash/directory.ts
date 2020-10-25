@@ -1,5 +1,5 @@
 import { Command, flags } from '@oclif/command';
-import { executeCommand } from '../../shared/helpers/execute-command';
+import { hashDirectory } from '../../modules/shared/helpers/hash-directory';
 
 export default class HashDirectory extends Command {
     static description = 'Generates the hash of a directory and outputs it to screen.';
@@ -17,17 +17,7 @@ export default class HashDirectory extends Command {
         if (!args.directory) {
             this.error(`Please specify the directory path...`);
         }
-        // Check here for the command:
-        // https://stackoverflow.com/questions/545387/linux-compute-a-single-hash-for-a-given-folder-contents
-
-        let hash = await executeCommand(
-            `find ${args.directory} -type f -print0 | sort -z | xargs -0 sha1sum | sha1sum`,
-            message => {},
-            this.error,
-            false,
-        );
-        hash = hash.replace(/ +-/, '');
-        hash = hash.replace(/\n/, '');
+        const hash = await hashDirectory(args.directory, this.log, this.error);
         this.log(hash);
     }
 }

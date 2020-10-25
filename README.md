@@ -28,21 +28,33 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
-* [`eci hash:directory [FILE]`](#eci-hashdirectory-file)
+* [`eci docker:build [FILE]`](#eci-dockerbuild-file)
+* [`eci hash:directory [DIRECTORY]`](#eci-hashdirectory-directory)
 * [`eci help [COMMAND]`](#eci-help-command)
 
-## `eci hash:directory [FILE]`
+## `eci docker:build [FILE]`
 
 describe the command here
 
 ```
 USAGE
-  $ eci hash:directory [FILE]
+  $ eci docker:build [FILE]
 
 OPTIONS
   -f, --force
   -h, --help       show CLI help
   -n, --name=name  name to print
+```
+
+_See code: [src/commands/docker/build.ts](https://github.com/entrostat/entro-ci/blob/v0.0.0/src/commands/docker/build.ts)_
+
+## `eci hash:directory [DIRECTORY]`
+
+Generates the hash of a directory and outputs it to screen.
+
+```
+USAGE
+  $ eci hash:directory [DIRECTORY]
 ```
 
 _See code: [src/commands/hash/directory.ts](https://github.com/entrostat/entro-ci/blob/v0.0.0/src/commands/hash/directory.ts)_
