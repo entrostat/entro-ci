@@ -6,7 +6,7 @@ export async function hashFile(filePath: string, log: Logger, error: Logger): Pr
     // https://stackoverflow.com/questions/545387/linux-compute-a-single-hash-for-a-given-folder-contents
 
     let hash = await executeCommand(`sha1sum ${filePath}`, log, error, false);
-    hash = hash.replace(/ +-/, '');
+    hash = hash.replace(/ +.+/, '');
     hash = hash.replace(/\n/, '');
     return hash;
 }
