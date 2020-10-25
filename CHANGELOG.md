@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.2](https://github.com/entrostat/entro-ci/compare/v1.1.1...v1.1.2) (2020-10-25)
+
+
+### Bug Fixes
+
+* **builder:** CD into the directory and build from there to ensure that the context is correct ([e2e7206](https://github.com/entrostat/entro-ci/commit/e2e7206f3327e4c146d0799cab01f83a64bdcab6))
+
 ### [1.1.1](https://github.com/entrostat/entro-ci/compare/v1.1.0...v1.1.1) (2020-10-25)
 
 
