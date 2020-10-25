@@ -5,6 +5,7 @@ import { generateDockerImageName } from '../../modules/shared/helpers/docker/doc
 import * as path from 'path';
 import { buildDockerImage } from '../../modules/shared/helpers/docker/build-docker-image';
 import { pushDockerImage } from '../../modules/shared/helpers/docker/push-docker-image';
+import { dockerImageExists } from '../../modules/shared/helpers/docker/docker-image-exists';
 
 export default class DockerBuild extends Command {
     static description =
@@ -51,13 +52,8 @@ export default class DockerBuild extends Command {
         const { args, flags } = this.parse(DockerBuild);
         const directory = path.resolve(flags.directory);
         const hash = await hashDirectory(directory, this.log, this.error);
-        const exists = await this.dockerImageExists(flags['image-name'], hash, flags.registry);
 
-        if (exists) {
-            this.log(`The image already exists, there is no need to build it again!`);
-            this.exit(0);
-        }
-
+        await this.assertDoesNotExist(flags, hash);
         this.log(`The image was not found in the registry, building the image now...`);
 
         const localImageName = await buildDockerImage(
@@ -69,10 +65,9 @@ export default class DockerBuild extends Command {
             flags.registry,
             flags['dry-run'],
         );
-        const tags = [hash];
-        if (flags['tag']) {
-            tags.push(flags['tag']);
-        }
+
+        const tags = this.getTags(hash, flags);
+
         await pushDockerImage(
             localImageName,
             tags,
@@ -84,17 +79,20 @@ export default class DockerBuild extends Command {
         );
     }
 
-    private async dockerImageExists(imageName: string, hash: string, registry?: string): Promise<boolean> {
-        try {
-            await executeCommand(
-                `docker pull ${generateDockerImageName(imageName, hash, registry)}`,
-                this.log,
-                this.warn,
-                false,
-            );
-            return true;
-        } catch (e) {
-            return false;
+    private async assertDoesNotExist(flags: any, hash: string) {
+        const exists = await dockerImageExists(flags['image-name'], hash, this.log, this.warn, flags.registry);
+
+        if (exists) {
+            this.log(`The image already exists, there is no need to build it again!`);
+            this.exit(0);
         }
+    }
+
+    private getTags(hash: string, flags: any) {
+        const tags = [hash];
+        if (flags['tag']) {
+            tags.push(flags['tag']);
+        }
+        return tags;
     }
 }
