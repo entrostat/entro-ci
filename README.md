@@ -19,7 +19,7 @@ $ npm install -g entro-ci
 $ eci COMMAND
 running command...
 $ eci (-v|--version|version)
-entro-ci/1.0.1 linux-x64 node-v12.18.3
+entro-ci/1.1.0 linux-x64 node-v12.18.3
 $ eci --help [COMMAND]
 USAGE
   $ eci COMMAND
@@ -29,7 +29,7 @@ USAGE
 # Commands
 <!-- commands -->
 * [`eci docker:build`](#eci-dockerbuild)
-* [`eci docker:build-from-file [FILE]`](#eci-dockerbuild-from-file-file)
+* [`eci docker:build-from-file`](#eci-dockerbuild-from-file)
 * [`eci hash:directory [DIRECTORY]`](#eci-hashdirectory-directory)
 * [`eci help [COMMAND]`](#eci-help-command)
 
@@ -55,23 +55,30 @@ OPTIONS
                                            in automated deployments
 ```
 
-_See code: [src/commands/docker/build.ts](https://github.com/entrostat/entro-ci/blob/v1.0.1/src/commands/docker/build.ts)_
+_See code: [src/commands/docker/build.ts](https://github.com/entrostat/entro-ci/blob/v1.1.0/src/commands/docker/build.ts)_
 
-## `eci docker:build-from-file [FILE]`
+## `eci docker:build-from-file`
 
-describe the command here
+Checks to see if a specific Dockerfile has changed (not the contents of a directory) and builds if this is the case
 
 ```
 USAGE
-  $ eci docker:build-from-file [FILE]
+  $ eci docker:build-from-file
 
 OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
+  -R, --dry-run                            Whether to run this live or do a dry run
+  -f, --docker-file-path=docker-file-path  (required) The path to the Docker file
+
+  -i, --image-name=image-name              (required) The name of the Docker image name without the version on it, eg:
+                                           entrostat/entro-ci is correct and entrostat/entro-ci:latest is not valid
+
+  -r, --registry=registry                  The registry that should be used (by default Docker Hub is used)
+
+  -t, --tag=tag                            The tag version that should be pushed to the registry so that it can be used
+                                           in automated deployments
 ```
 
-_See code: [src/commands/docker/build-from-file.ts](https://github.com/entrostat/entro-ci/blob/v1.0.1/src/commands/docker/build-from-file.ts)_
+_See code: [src/commands/docker/build-from-file.ts](https://github.com/entrostat/entro-ci/blob/v1.1.0/src/commands/docker/build-from-file.ts)_
 
 ## `eci hash:directory [DIRECTORY]`
 
@@ -82,7 +89,7 @@ USAGE
   $ eci hash:directory [DIRECTORY]
 ```
 
-_See code: [src/commands/hash/directory.ts](https://github.com/entrostat/entro-ci/blob/v1.0.1/src/commands/hash/directory.ts)_
+_See code: [src/commands/hash/directory.ts](https://github.com/entrostat/entro-ci/blob/v1.1.0/src/commands/hash/directory.ts)_
 
 ## `eci help [COMMAND]`
 
