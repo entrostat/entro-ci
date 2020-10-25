@@ -16,30 +16,30 @@ An automated CI tool to help with building packages and ignoring them when there
 <!-- usage -->
 ```sh-session
 $ npm install -g entro-ci
-$ eci COMMAND
+$ entro-ci COMMAND
 running command...
-$ eci (-v|--version|version)
-entro-ci/1.1.0 linux-x64 node-v12.18.3
-$ eci --help [COMMAND]
+$ entro-ci (-v|--version|version)
+entro-ci/1.1.1 linux-x64 node-v12.18.3
+$ entro-ci --help [COMMAND]
 USAGE
-  $ eci COMMAND
+  $ entro-ci COMMAND
 ...
 ```
 <!-- usagestop -->
 # Commands
 <!-- commands -->
-* [`eci docker:build`](#eci-dockerbuild)
-* [`eci docker:build-from-file`](#eci-dockerbuild-from-file)
-* [`eci hash:directory [DIRECTORY]`](#eci-hashdirectory-directory)
-* [`eci help [COMMAND]`](#eci-help-command)
+* [`entro-ci docker:build`](#entro-ci-dockerbuild)
+* [`entro-ci docker:build-from-file`](#entro-ci-dockerbuild-from-file)
+* [`entro-ci hash:directory [DIRECTORY]`](#entro-ci-hashdirectory-directory)
+* [`entro-ci help [COMMAND]`](#entro-ci-help-command)
 
-## `eci docker:build`
+## `entro-ci docker:build`
 
 Checks if the Docker image has been built before and if it has not then it will build it and push it with the hash to the Docker registry
 
 ```
 USAGE
-  $ eci docker:build
+  $ entro-ci docker:build
 
 OPTIONS
   -R, --dry-run                            Whether to run this live or do a dry run
@@ -55,15 +55,15 @@ OPTIONS
                                            in automated deployments
 ```
 
-_See code: [src/commands/docker/build.ts](https://github.com/entrostat/entro-ci/blob/v1.1.0/src/commands/docker/build.ts)_
+_See code: [src/commands/docker/build.ts](https://github.com/entrostat/entro-ci/blob/v1.1.1/src/commands/docker/build.ts)_
 
-## `eci docker:build-from-file`
+## `entro-ci docker:build-from-file`
 
 Checks to see if a specific Dockerfile has changed (not the contents of a directory) and builds if this is the case
 
 ```
 USAGE
-  $ eci docker:build-from-file
+  $ entro-ci docker:build-from-file
 
 OPTIONS
   -R, --dry-run                            Whether to run this live or do a dry run
@@ -78,26 +78,26 @@ OPTIONS
                                            in automated deployments
 ```
 
-_See code: [src/commands/docker/build-from-file.ts](https://github.com/entrostat/entro-ci/blob/v1.1.0/src/commands/docker/build-from-file.ts)_
+_See code: [src/commands/docker/build-from-file.ts](https://github.com/entrostat/entro-ci/blob/v1.1.1/src/commands/docker/build-from-file.ts)_
 
-## `eci hash:directory [DIRECTORY]`
+## `entro-ci hash:directory [DIRECTORY]`
 
 Generates the hash of a directory and outputs it to screen.
 
 ```
 USAGE
-  $ eci hash:directory [DIRECTORY]
+  $ entro-ci hash:directory [DIRECTORY]
 ```
 
-_See code: [src/commands/hash/directory.ts](https://github.com/entrostat/entro-ci/blob/v1.1.0/src/commands/hash/directory.ts)_
+_See code: [src/commands/hash/directory.ts](https://github.com/entrostat/entro-ci/blob/v1.1.1/src/commands/hash/directory.ts)_
 
-## `eci help [COMMAND]`
+## `entro-ci help [COMMAND]`
 
-display help for eci
+display help for entro-ci
 
 ```
 USAGE
-  $ eci help [COMMAND]
+  $ entro-ci help [COMMAND]
 
 ARGUMENTS
   COMMAND  command to show help for
