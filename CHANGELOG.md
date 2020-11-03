@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/entrostat/entro-ci/compare/v1.1.3...v1.2.0) (2020-11-03)
+
+
+### Features
+
+* **kubernetes:** Added a script to enable a deployment update without the deployment itself changing ([6a324bd](https://github.com/entrostat/entro-ci/commit/6a324bd66f7024f63460202dd84e2abf36fd73e5))
+
 ### [1.1.3](https://github.com/entrostat/entro-ci/compare/v1.1.2...v1.1.3) (2020-10-25)
 
 
