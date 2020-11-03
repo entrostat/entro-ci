@@ -19,7 +19,7 @@ $ npm install -g entro-ci
 $ entro-ci COMMAND
 running command...
 $ entro-ci (-v|--version|version)
-entro-ci/1.1.2 linux-x64 node-v12.18.3
+entro-ci/1.1.3 linux-x64 node-v12.18.3
 $ entro-ci --help [COMMAND]
 USAGE
   $ entro-ci COMMAND
@@ -55,7 +55,7 @@ OPTIONS
                                            in automated deployments
 ```
 
-_See code: [src/commands/docker/build.ts](https://github.com/entrostat/entro-ci/blob/v1.1.2/src/commands/docker/build.ts)_
+_See code: [src/commands/docker/build.ts](https://github.com/entrostat/entro-ci/blob/v1.1.3/src/commands/docker/build.ts)_
 
 ## `entro-ci docker:build-from-file`
 
@@ -78,7 +78,7 @@ OPTIONS
                                            in automated deployments
 ```
 
-_See code: [src/commands/docker/build-from-file.ts](https://github.com/entrostat/entro-ci/blob/v1.1.2/src/commands/docker/build-from-file.ts)_
+_See code: [src/commands/docker/build-from-file.ts](https://github.com/entrostat/entro-ci/blob/v1.1.3/src/commands/docker/build-from-file.ts)_
 
 ## `entro-ci hash:directory [DIRECTORY]`
 
@@ -89,7 +89,7 @@ USAGE
   $ entro-ci hash:directory [DIRECTORY]
 ```
 
-_See code: [src/commands/hash/directory.ts](https://github.com/entrostat/entro-ci/blob/v1.1.2/src/commands/hash/directory.ts)_
+_See code: [src/commands/hash/directory.ts](https://github.com/entrostat/entro-ci/blob/v1.1.3/src/commands/hash/directory.ts)_
 
 ## `entro-ci help [COMMAND]`
 
