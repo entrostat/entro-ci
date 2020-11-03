@@ -19,7 +19,7 @@ $ npm install -g entro-ci
 $ entro-ci COMMAND
 running command...
 $ entro-ci (-v|--version|version)
-entro-ci/1.1.3 linux-x64 node-v14.15.0
+entro-ci/1.2.0 linux-x64 node-v14.15.0
 $ entro-ci --help [COMMAND]
 USAGE
   $ entro-ci COMMAND
@@ -32,7 +32,7 @@ USAGE
 * [`entro-ci docker:build-from-file`](#entro-ci-dockerbuild-from-file)
 * [`entro-ci hash:directory [DIRECTORY]`](#entro-ci-hashdirectory-directory)
 * [`entro-ci help [COMMAND]`](#entro-ci-help-command)
-* [`entro-ci kube:deployment:update [FILE]`](#entro-ci-kubedeploymentupdate-file)
+* [`entro-ci kube:deployment:update DEPLOYMENT [NAMESPACE]`](#entro-ci-kubedeploymentupdate-deployment-namespace)
 
 ## `entro-ci docker:build`
 
@@ -56,7 +56,7 @@ OPTIONS
                                            in automated deployments
 ```
 
-_See code: [src/commands/docker/build.ts](https://github.com/entrostat/entro-ci/blob/v1.1.3/src/commands/docker/build.ts)_
+_See code: [src/commands/docker/build.ts](https://github.com/entrostat/entro-ci/blob/v1.2.0/src/commands/docker/build.ts)_
 
 ## `entro-ci docker:build-from-file`
 
@@ -79,7 +79,7 @@ OPTIONS
                                            in automated deployments
 ```
 
-_See code: [src/commands/docker/build-from-file.ts](https://github.com/entrostat/entro-ci/blob/v1.1.3/src/commands/docker/build-from-file.ts)_
+_See code: [src/commands/docker/build-from-file.ts](https://github.com/entrostat/entro-ci/blob/v1.2.0/src/commands/docker/build-from-file.ts)_
 
 ## `entro-ci hash:directory [DIRECTORY]`
 
@@ -90,7 +90,7 @@ USAGE
   $ entro-ci hash:directory [DIRECTORY]
 ```
 
-_See code: [src/commands/hash/directory.ts](https://github.com/entrostat/entro-ci/blob/v1.1.3/src/commands/hash/directory.ts)_
+_See code: [src/commands/hash/directory.ts](https://github.com/entrostat/entro-ci/blob/v1.2.0/src/commands/hash/directory.ts)_
 
 ## `entro-ci help [COMMAND]`
 
@@ -109,19 +109,24 @@ OPTIONS
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.2.0/src/commands/help.ts)_
 
-## `entro-ci kube:deployment:update [FILE]`
+## `entro-ci kube:deployment:update DEPLOYMENT [NAMESPACE]`
 
-describe the command here
+Trigger an update on a deployment
 
 ```
 USAGE
-  $ entro-ci kube:deployment:update [FILE]
+  $ entro-ci kube:deployment:update DEPLOYMENT [NAMESPACE]
+
+ARGUMENTS
+  DEPLOYMENT  The name of the deployment that you would like to update
+  NAMESPACE   [default: default] The namespace that the deployment is in
 
 OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
+  -b, --bin=bin  [default: kubectl] The path to the kubectl executable
+
+ALIASES
+  $ entro-ci kdu
 ```
 
-_See code: [src/commands/kube/deployment/update.ts](https://github.com/entrostat/entro-ci/blob/v1.1.3/src/commands/kube/deployment/update.ts)_
+_See code: [src/commands/kube/deployment/update.ts](https://github.com/entrostat/entro-ci/blob/v1.2.0/src/commands/kube/deployment/update.ts)_
 <!-- commandsstop -->
