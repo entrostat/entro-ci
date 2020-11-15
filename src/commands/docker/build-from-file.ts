@@ -8,6 +8,8 @@ export default class DockerBuildFromFile extends BuildImageWorkflowBaseCommand {
     static description =
         'Checks to see if a specific Dockerfile has changed (not the contents of a directory) and builds if this is the case';
 
+    static example = `entro-ci docker:build-from-file --image-name=my-repo/my-image --docker-file-path=./backend/Dockerfile --watch-file=./backend/package.json --watch-file=./backend/manifest.json --tag=stable`;
+
     static flags = {
         'image-name': flags.string({
             char: 'i',
