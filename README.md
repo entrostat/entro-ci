@@ -19,7 +19,7 @@ $ npm install -g entro-ci
 $ entro-ci COMMAND
 running command...
 $ entro-ci (-v|--version|version)
-entro-ci/1.2.0 linux-x64 node-v14.15.0
+entro-ci/1.3.0 linux-x64 node-v14.15.0
 $ entro-ci --help [COMMAND]
 USAGE
   $ entro-ci COMMAND
@@ -54,9 +54,12 @@ OPTIONS
 
   -t, --tag=tag                            The tag version that should be pushed to the registry so that it can be used
                                            in automated deployments
+
+EXAMPLES
+  entro-ci docker:build --directory=./backend --image-name=my-repo/my-image --tag=stable
 ```
 
-_See code: [src/commands/docker/build.ts](https://github.com/entrostat/entro-ci/blob/v1.2.0/src/commands/docker/build.ts)_
+_See code: [src/commands/docker/build.ts](https://github.com/entrostat/entro-ci/blob/v1.3.0/src/commands/docker/build.ts)_
 
 ## `entro-ci docker:build-from-file`
 
@@ -77,9 +80,16 @@ OPTIONS
 
   -t, --tag=tag                            The tag version that should be pushed to the registry so that it can be used
                                            in automated deployments
+
+  -w, --watch-file=watch-file              One or more files that should be "watched" for change that fall into this
+                                           Dockerfile. So it is not a whole folder but a file or two.
+
+EXAMPLES
+  entro-ci docker:build-from-file --image-name=my-repo/my-image --docker-file-path=./backend/Dockerfile 
+  --watch-file=./backend/package.json --watch-file=./backend/manifest.json --tag=stable
 ```
 
-_See code: [src/commands/docker/build-from-file.ts](https://github.com/entrostat/entro-ci/blob/v1.2.0/src/commands/docker/build-from-file.ts)_
+_See code: [src/commands/docker/build-from-file.ts](https://github.com/entrostat/entro-ci/blob/v1.3.0/src/commands/docker/build-from-file.ts)_
 
 ## `entro-ci hash:directory [DIRECTORY]`
 
@@ -90,7 +100,7 @@ USAGE
   $ entro-ci hash:directory [DIRECTORY]
 ```
 
-_See code: [src/commands/hash/directory.ts](https://github.com/entrostat/entro-ci/blob/v1.2.0/src/commands/hash/directory.ts)_
+_See code: [src/commands/hash/directory.ts](https://github.com/entrostat/entro-ci/blob/v1.3.0/src/commands/hash/directory.ts)_
 
 ## `entro-ci help [COMMAND]`
 
@@ -128,5 +138,5 @@ ALIASES
   $ entro-ci kdu
 ```
 
-_See code: [src/commands/kube/deployment/update.ts](https://github.com/entrostat/entro-ci/blob/v1.2.0/src/commands/kube/deployment/update.ts)_
+_See code: [src/commands/kube/deployment/update.ts](https://github.com/entrostat/entro-ci/blob/v1.3.0/src/commands/kube/deployment/update.ts)_
 <!-- commandsstop -->
