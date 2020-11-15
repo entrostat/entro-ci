@@ -8,6 +8,8 @@ export default class DockerBuild extends BuildImageWorkflowBaseCommand {
         'Checks if the Docker image has been built before and if it has not then it will build it and push it with the' +
         ' hash to the Docker registry';
 
+    static example = `entro-ci docker:build --directory=./backend --image-name=my-repo/my-image --tag=stable`;
+
     static flags = {
         directory: flags.string({
             char: 'd',
