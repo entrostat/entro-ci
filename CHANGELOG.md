@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.3.1](https://github.com/entrostat/entro-ci/compare/v1.3.0...v1.3.1) (2020-11-16)
+
+
+### Bug Fixes
+
+* **watch-files:** Added a default for the watch files if there are none specified ([ef424fb](https://github.com/entrostat/entro-ci/commit/ef424fb1f9fed77327053f7cb98695603cc3f7db))
+
 ## [1.3.0](https://github.com/entrostat/entro-ci/compare/v1.2.0...v1.3.0) (2020-11-15)
 
 
