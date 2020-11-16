@@ -51,8 +51,8 @@ export default class DockerBuildFromFile extends BuildImageWorkflowBaseCommand {
     async run() {
         const { args, flags } = this.parse(DockerBuildFromFile);
         const filePath = path.resolve(flags['docker-file-path']);
-        const watchedFilePaths = flags['watch-file'].map(file => path.resolve(file));
-        const hash = watchedFilePaths.length
+        const watchedFilePaths = (flags['watch-file'] || []).map(file => path.resolve(file));
+        const hash = watchedFilePaths.length > 0
             ? await hashFiles(watchedFilePaths.concat([filePath]), this.log, this.error)
             : await hashFile(filePath, this.log, this.error);
         const modifiedFlags: any = flags;
