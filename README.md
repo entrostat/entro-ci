@@ -30,6 +30,7 @@ USAGE
 <!-- commands -->
 * [`entro-ci docker:build`](#entro-ci-dockerbuild)
 * [`entro-ci docker:build-from-file`](#entro-ci-dockerbuild-from-file)
+* [`entro-ci entro-hash:init [FILE]`](#entro-ci-entro-hashinit-file)
 * [`entro-ci hash:directory [DIRECTORY]`](#entro-ci-hashdirectory-directory)
 * [`entro-ci help [COMMAND]`](#entro-ci-help-command)
 * [`entro-ci kube:deployment:update DEPLOYMENT [NAMESPACE]`](#entro-ci-kubedeploymentupdate-deployment-namespace)
@@ -90,6 +91,22 @@ EXAMPLES
 ```
 
 _See code: [src/commands/docker/build-from-file.ts](https://github.com/entrostat/entro-ci/blob/v1.3.1/src/commands/docker/build-from-file.ts)_
+
+## `entro-ci entro-hash:init [FILE]`
+
+describe the command here
+
+```
+USAGE
+  $ entro-ci entro-hash:init [FILE]
+
+OPTIONS
+  -f, --force
+  -h, --help       show CLI help
+  -n, --name=name  name to print
+```
+
+_See code: [src/commands/entro-hash/init.ts](https://github.com/entrostat/entro-ci/blob/v1.3.1/src/commands/entro-hash/init.ts)_
 
 ## `entro-ci hash:directory [DIRECTORY]`
 
