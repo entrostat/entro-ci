@@ -2,7 +2,7 @@ import Command from '@oclif/command';
 import * as fs from 'fs-extra';
 import * as path from 'path';
 
-export class BaseCommand extends Command {
+export abstract class BaseCommand extends Command {
     async getConfig() {
         try {
             if (!(await fs.stat(this.getConfigPath()))) {
