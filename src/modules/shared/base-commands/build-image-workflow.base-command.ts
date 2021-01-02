@@ -1,9 +1,10 @@
-import { Command } from '@oclif/command';
 import { buildDockerImage } from '../helpers/docker/build-docker-image';
 import { pushDockerImage } from '../helpers/docker/push-docker-image';
-import { dockerImageExists } from '../helpers/docker/docker-image-exists';
+import { getHashValue } from '../helpers/entro-hash/get-hash-value';
+import { BaseCommand } from './base-command';
+import { setHashValue } from '../helpers/entro-hash/set-hash-value';
 
-export abstract class BuildImageWorkflowBaseCommand extends Command {
+export abstract class BuildImageWorkflowBaseCommand extends BaseCommand {
     async buildFromHash(hash: string, directory: string, flags: any) {
         await this.assertDoesNotExist(flags, hash);
         this.log(`The image was not found in the registry, building the image now...`);
@@ -29,10 +30,19 @@ export abstract class BuildImageWorkflowBaseCommand extends Command {
             flags['dry-run'],
             flags.registry,
         );
+
+        await setHashValue(
+            hash,
+            {
+                hash: true,
+                imageName: flags['image-name'],
+            },
+            await this.getConfig(),
+        );
     }
 
     private async assertDoesNotExist(flags: any, hash: string) {
-        const exists = await dockerImageExists(flags['image-name'], hash, this.log, this.warn, flags.registry);
+        const exists = await getHashValue(hash, await this.getConfig());
 
         if (exists) {
             this.log(`The image already exists, there is no need to build it again!`);
