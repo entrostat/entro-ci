@@ -1,5 +1,7 @@
 import { flags } from '@oclif/command';
 import { BaseCommand } from '../../modules/shared/base-commands/base-command';
+import { getHashValue } from '../../modules/shared/helpers/entro-hash/get-hash-value';
+import { setHashValue } from '../../modules/shared/helpers/entro-hash/set-hash-value';
 
 export default class EntroHashInit extends BaseCommand {
     static description = 'Set the URL and auth details for the Entro Hash Storage CLI';
