@@ -19,7 +19,7 @@ $ npm install -g entro-ci
 $ entro-ci COMMAND
 running command...
 $ entro-ci (-v|--version|version)
-entro-ci/1.3.1 linux-x64 node-v12.16.3
+entro-ci/1.4.0 linux-x64 node-v12.16.3
 $ entro-ci --help [COMMAND]
 USAGE
   $ entro-ci COMMAND
@@ -30,7 +30,7 @@ USAGE
 <!-- commands -->
 * [`entro-ci docker:build`](#entro-ci-dockerbuild)
 * [`entro-ci docker:build-from-file`](#entro-ci-dockerbuild-from-file)
-* [`entro-ci entro-hash:init [FILE]`](#entro-ci-entro-hashinit-file)
+* [`entro-ci entro-hash:init`](#entro-ci-entro-hashinit)
 * [`entro-ci hash:directory [DIRECTORY]`](#entro-ci-hashdirectory-directory)
 * [`entro-ci help [COMMAND]`](#entro-ci-help-command)
 * [`entro-ci kube:deployment:update DEPLOYMENT [NAMESPACE]`](#entro-ci-kubedeploymentupdate-deployment-namespace)
@@ -60,7 +60,7 @@ EXAMPLES
   entro-ci docker:build --directory=./backend --image-name=my-repo/my-image --tag=stable
 ```
 
-_See code: [src/commands/docker/build.ts](https://github.com/entrostat/entro-ci/blob/v1.3.1/src/commands/docker/build.ts)_
+_See code: [src/commands/docker/build.ts](https://github.com/entrostat/entro-ci/blob/v1.4.0/src/commands/docker/build.ts)_
 
 ## `entro-ci docker:build-from-file`
 
@@ -90,23 +90,22 @@ EXAMPLES
   --watch-file=./backend/package.json --watch-file=./backend/manifest.json --tag=stable
 ```
 
-_See code: [src/commands/docker/build-from-file.ts](https://github.com/entrostat/entro-ci/blob/v1.3.1/src/commands/docker/build-from-file.ts)_
+_See code: [src/commands/docker/build-from-file.ts](https://github.com/entrostat/entro-ci/blob/v1.4.0/src/commands/docker/build-from-file.ts)_
 
-## `entro-ci entro-hash:init [FILE]`
+## `entro-ci entro-hash:init`
 
-describe the command here
+Set the URL and auth details for the Entro Hash Storage CLI
 
 ```
 USAGE
-  $ entro-ci entro-hash:init [FILE]
+  $ entro-ci entro-hash:init
 
 OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
+  -t, --token=token  (required) The token for the Entro Hash Store API
+  -u, --url=url      (required) The Entro Hash Store API URL
 ```
 
-_See code: [src/commands/entro-hash/init.ts](https://github.com/entrostat/entro-ci/blob/v1.3.1/src/commands/entro-hash/init.ts)_
+_See code: [src/commands/entro-hash/init.ts](https://github.com/entrostat/entro-ci/blob/v1.4.0/src/commands/entro-hash/init.ts)_
 
 ## `entro-ci hash:directory [DIRECTORY]`
 
@@ -117,7 +116,7 @@ USAGE
   $ entro-ci hash:directory [DIRECTORY]
 ```
 
-_See code: [src/commands/hash/directory.ts](https://github.com/entrostat/entro-ci/blob/v1.3.1/src/commands/hash/directory.ts)_
+_See code: [src/commands/hash/directory.ts](https://github.com/entrostat/entro-ci/blob/v1.4.0/src/commands/hash/directory.ts)_
 
 ## `entro-ci help [COMMAND]`
 
@@ -155,5 +154,5 @@ ALIASES
   $ entro-ci kdu
 ```
 
-_See code: [src/commands/kube/deployment/update.ts](https://github.com/entrostat/entro-ci/blob/v1.3.1/src/commands/kube/deployment/update.ts)_
+_See code: [src/commands/kube/deployment/update.ts](https://github.com/entrostat/entro-ci/blob/v1.4.0/src/commands/kube/deployment/update.ts)_
 <!-- commandsstop -->
