@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.5.1](https://github.com/entrostat/entro-ci/compare/v1.5.0...v1.5.1) (2021-01-08)
+
+
+### Bug Fixes
+
+* **build:** Corrected Typescript linting errors ([72994dc](https://github.com/entrostat/entro-ci/commit/72994dc7408631b7210d07d8f949029bcbfad35d))
+
 ## [1.5.0](https://github.com/entrostat/entro-ci/compare/v1.4.1...v1.5.0) (2021-01-08)
 
 
