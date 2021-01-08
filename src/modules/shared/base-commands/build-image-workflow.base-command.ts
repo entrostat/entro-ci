@@ -4,44 +4,44 @@ import { getHashValue } from '../helpers/entro-hash/get-hash-value';
 import { BaseCommand } from './base-command';
 import { setHashValue } from '../helpers/entro-hash/set-hash-value';
 
+export interface BuildFromHashFlags {
+    imageName: string;
+    dockerFileName: string;
+    registry: string;
+    dryRun: boolean;
+    tag: string;
+}
+
 export abstract class BuildImageWorkflowBaseCommand extends BaseCommand {
-    async buildFromHash(hash: string, directory: string, flags: any) {
+    async buildFromHash(hash: string, directory: string, flags: BuildFromHashFlags) {
         await this.assertDoesNotExist(flags, hash);
         this.log(`The image was not found in the registry, building the image now...`);
 
         const localImageName = await buildDockerImage(
             directory,
-            flags['image-name'],
+            flags.imageName,
             this.log,
             this.warn,
-            flags['docker-file-name'],
+            flags.dockerFileName,
             flags.registry,
-            flags['dry-run'],
+            flags.dryRun,
         );
 
         const tags = this.getTags(hash, flags);
 
-        await pushDockerImage(
-            localImageName,
-            tags,
-            flags['image-name'],
-            this.log,
-            this.warn,
-            flags['dry-run'],
-            flags.registry,
-        );
+        await pushDockerImage(localImageName, tags, flags.imageName, this.log, this.warn, flags.dryRun, flags.registry);
 
         await setHashValue(
             hash,
             {
                 hash: true,
-                imageName: flags['image-name'],
+                imageName: flags.imageName,
             },
             await this.getConfig(),
         );
     }
 
-    private async assertDoesNotExist(flags: any, hash: string) {
+    private async assertDoesNotExist(flags: BuildFromHashFlags, hash: string) {
         const exists = await getHashValue(hash, await this.getConfig());
 
         if (exists) {
@@ -50,10 +50,10 @@ export abstract class BuildImageWorkflowBaseCommand extends BaseCommand {
         }
     }
 
-    private getTags(hash: string, flags: any) {
+    private getTags(hash: string, flags: BuildFromHashFlags) {
         const tags = [hash];
-        if (flags['tag']) {
-            tags.push(flags['tag']);
+        if (flags.tag) {
+            tags.push(flags.tag);
         }
         return tags;
     }

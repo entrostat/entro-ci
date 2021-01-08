@@ -11,6 +11,8 @@
         "@oclif/command": "^1.8.0",
         "@oclif/config": "^1.17.0",
         "@oclif/plugin-help": "^3.2.0",
+        "class-transformer": "^0.3.1",
+        "class-validator": "^0.12.2",
         "cli-ux": "^5.5.0",
         "fs-extra": "^9.0.1",
         "got": "^11.8.1",
