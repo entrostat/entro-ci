@@ -1,7 +1,7 @@
 {
     "name": "entro-ci",
     "description": "An automated CI tool to help with building packages and ignoring them when there wasn't a change.",
-    "version": "1.4.0",
+    "version": "1.4.1",
     "author": "Kerren @Kerren-Entrostat",
     "bin": {
         "entro-ci": "./bin/run"

@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.1](https://github.com/entrostat/entro-ci/compare/v1.4.0...v1.4.1) (2021-01-08)
+
+
+### Bug Fixes
+
+* **build:** Added the image name to the hash so that we can trigger builds on all entro-ci calls even if the hash is the same but the image name is different ([c6c75e1](https://github.com/entrostat/entro-ci/commit/c6c75e131d1e29d541336af6a2e20fa1b58bac4c))
+* **build:** Added the node types ([1d4d58f](https://github.com/entrostat/entro-ci/commit/1d4d58fd213b36d7b29be72fe97886ce51f9f9af))
+
 ## [1.4.0](https://github.com/entrostat/entro-ci/compare/v1.3.1...v1.4.0) (2021-01-02)
 
 
