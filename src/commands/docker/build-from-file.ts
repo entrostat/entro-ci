@@ -58,9 +58,9 @@ export default class DockerBuildFromFile extends BuildImageWorkflowBaseCommand {
             watchedFilePaths.length > 0
                 ? await hashFiles(watchedFilePaths.concat([filePath]), this.log, this.error)
                 : await hashFile(filePath, this.log, this.error);
-        const modifiedFlags: object = flags;
+        const modifiedFlags: any = flags;
         modifiedFlags['docker-file-name'] = path.basename(flags['docker-file-path']);
-        const dockerBuildFromFileFlags = plainToClass(DockerBuildFromBuildFlags, modifiedFlags);
+        const dockerBuildFromFileFlags = plainToClass(DockerBuildFromBuildFlags, modifiedFlags as object);
         await this.buildFromHash(hash, path.dirname(dockerBuildFromFileFlags.dockerFilePath), dockerBuildFromFileFlags);
     }
 }

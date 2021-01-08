@@ -15,7 +15,7 @@ export function AliasKeys(keys: string[] | string): PropertyDecorator {
         } else {
             return obj[keys];
         }
-    });
+    }) as (target: Object, propertyKey: string | symbol) => void;
 }
 
 export function AliasKey(key: string): PropertyDecorator {
