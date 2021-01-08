@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.5.0](https://github.com/entrostat/entro-ci/compare/v1.4.1...v1.5.0) (2021-01-08)
+
+
+### Features
+
+* **build:** Improved the process that is used to trigger image pushes if the hash is the same but the image name is different ([31cf103](https://github.com/entrostat/entro-ci/commit/31cf10309eaa2d19ee6b8ec5e7ce9c4f344daf5f))
+
 ### [1.4.1](https://github.com/entrostat/entro-ci/compare/v1.4.0...v1.4.1) (2021-01-08)
 
 
