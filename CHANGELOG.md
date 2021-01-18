@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.5.2](https://github.com/entrostat/entro-ci/compare/v1.5.1...v1.5.2) (2021-01-18)
+
+
+### Bug Fixes
+
+* **build:** Return undefined if the key doesn't exist in the array ([325b6be](https://github.com/entrostat/entro-ci/commit/325b6be034a8a928974b8ffbdf4773cfb5b2d6d1))
+
 ### [1.5.1](https://github.com/entrostat/entro-ci/compare/v1.5.0...v1.5.1) (2021-01-08)
 
 
