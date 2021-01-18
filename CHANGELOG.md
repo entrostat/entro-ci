@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.5.3](https://github.com/entrostat/entro-ci/compare/v1.5.2...v1.5.3) (2021-01-18)
+
+
+### Bug Fixes
+
+* **build:** Added an echo of the output options ([7689792](https://github.com/entrostat/entro-ci/commit/7689792b92b2d900473a071c0b5dbec3ecbf2ca4))
+
 ### [1.5.2](https://github.com/entrostat/entro-ci/compare/v1.5.1...v1.5.2) (2021-01-18)
 
 
