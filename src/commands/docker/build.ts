@@ -53,6 +53,11 @@ export default class DockerBuild extends BuildImageWorkflowBaseCommand {
         const directory = path.resolve(flags.directory);
         const hash = await hashDirectory(directory, this.log, this.error);
         const dockerBuildFlags = plainToClass(DockerBuildFlags, flags);
+        // I found that the alias doesn't seem to be working in my deployment
+        // environment. For short term, I'm going to set it using this.
+        dockerBuildFlags.imageName = flags['image-name'];
+        dockerBuildFlags.dockerFileName = flags['docker-file-name'];
+        dockerBuildFlags.dryRun = flags['dry-run'];
         this.log(`Running with the following options`, dockerBuildFlags);
         await this.buildFromHash(hash, directory, dockerBuildFlags);
     }
