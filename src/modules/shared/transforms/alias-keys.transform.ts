@@ -8,10 +8,11 @@ export function AliasKeys(keys: string[] | string): PropertyDecorator {
         }
         if (Array.isArray(keys)) {
             for (const key of keys) {
-                if (key in obj) {
+                if (obj[key] !== undefined) {
                     return obj[key];
                 }
             }
+            return value;
         } else {
             return obj[keys];
         }
