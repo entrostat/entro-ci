@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.5.4](https://github.com/entrostat/entro-ci/compare/v1.5.3...v1.5.4) (2021-01-18)
+
+
+### Bug Fixes
+
+* **build:** Removed the reuse of the alias key array ([ccaba99](https://github.com/entrostat/entro-ci/commit/ccaba9907fc0c2e53430b46c62250a8c07f10f08))
+
 ### [1.5.3](https://github.com/entrostat/entro-ci/compare/v1.5.2...v1.5.3) (2021-01-18)
 
 
