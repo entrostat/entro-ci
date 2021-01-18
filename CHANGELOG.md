@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.5.5](https://github.com/entrostat/entro-ci/compare/v1.5.4...v1.5.5) (2021-01-18)
+
+
+### Bug Fixes
+
+* **build:** Alias key override - short-term fix ([ae3c615](https://github.com/entrostat/entro-ci/commit/ae3c615c1e734cc2e2df68c08fbd1c6614e9a82f))
+
 ### [1.5.4](https://github.com/entrostat/entro-ci/compare/v1.5.3...v1.5.4) (2021-01-18)
 
 
