@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.5.7](https://github.com/entrostat/entro-ci/compare/v1.5.6...v1.5.7) (2021-01-21)
+
+
+### Bug Fixes
+
+* **build:** Short term fix to trigger the build again ([7bec095](https://github.com/entrostat/entro-ci/commit/7bec095fe0a3d739effe7d0a3294a6f8e5b6f492))
+
 ### [1.5.6](https://github.com/entrostat/entro-ci/compare/v1.5.5...v1.5.6) (2021-01-21)
 
 ### [1.5.5](https://github.com/entrostat/entro-ci/compare/v1.5.4...v1.5.5) (2021-01-18)
