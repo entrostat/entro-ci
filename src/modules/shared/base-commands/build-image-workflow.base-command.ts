@@ -119,10 +119,14 @@ export abstract class BuildImageWorkflowBaseCommand extends BaseCommand {
             return;
         }
         if (!baseBuiltLocally) {
-            // This was built before, we just need to pull it so that we can
-            // push it under a different image name
-            this.log(`Pulling the base image from the registry`);
-            await pullDockerImage(hash, flags.imageName, this.log, this.warn, flags.registry, flags.dryRun);
+            try {
+                // This was built before, we just need to pull it so that we can
+                // push it under a different image name
+                this.log(`Pulling the base image from the registry`);
+                await pullDockerImage(hash, flags.imageName, this.log, this.warn, flags.registry, flags.dryRun);
+            } catch (e) {
+                this.log(`Failed to pull the image so we'll just build it!`);
+            }
         }
         const baseImageName = generateDockerImageName(flags.imageName, hash, flags.registry);
         await pushDockerImage(
