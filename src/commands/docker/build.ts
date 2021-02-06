@@ -2,7 +2,7 @@ import { flags } from '@oclif/command';
 import { hashDirectory } from '../../modules/shared/helpers/hash-directory';
 import * as path from 'path';
 import { BuildImageWorkflowBaseCommand } from '../../modules/shared/base-commands/build-image-workflow.base-command';
-import { DockerBuildFlags } from '../../modules/models/docker-build-flags';
+import { DockerBuildFlags } from '../../modules/models/docker.build-flags';
 import { plainToClass } from 'class-transformer';
 
 export default class DockerBuild extends BuildImageWorkflowBaseCommand {

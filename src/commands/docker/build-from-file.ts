@@ -4,7 +4,7 @@ import * as path from 'path';
 import { hashFile } from '../../modules/shared/helpers/hash-file';
 import { hashFiles } from '../../modules/shared/helpers/hash-files';
 import { plainToClass } from 'class-transformer';
-import { DockerBuildFromBuildFlags } from '../../modules/models/docker-build-from-build-flags';
+import { DockerBuildFromBuildFlags } from '../../modules/models/docker-build-from.build-flags';
 
 export default class DockerBuildFromFile extends BuildImageWorkflowBaseCommand {
     static description =
