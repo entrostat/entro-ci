@@ -8,7 +8,8 @@
         "strict": true,
         "target": "es2017",
         "experimentalDecorators": true,
-        "strictPropertyInitialization": false
+        "strictPropertyInitialization": false,
+        "emitDecoratorMetadata": true
     },
     "include": ["src/**/*"]
 }
