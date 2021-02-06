@@ -2,8 +2,6 @@ import { flags } from '@oclif/command';
 import { hashDirectory } from '../../modules/shared/helpers/hash-directory';
 import * as path from 'path';
 import { BuildImageWorkflowBaseCommand } from '../../modules/shared/base-commands/build-image-workflow.base-command';
-import { DockerBuildFlags } from '../../modules/models/docker-build-flags';
-import { plainToClass } from 'class-transformer';
 
 export default class DockerBuild extends BuildImageWorkflowBaseCommand {
     static description =
@@ -51,14 +49,18 @@ export default class DockerBuild extends BuildImageWorkflowBaseCommand {
     async run() {
         const { flags } = this.parse(DockerBuild);
         const directory = path.resolve(flags.directory);
-        const hash = await hashDirectory(directory, this.log, this.error);
-        const dockerBuildFlags = plainToClass(DockerBuildFlags, flags);
-        // I found that the alias doesn't seem to be working in my deployment
-        // environment. For short term, I'm going to set it using this.
-        dockerBuildFlags.imageName = flags['image-name'];
-        dockerBuildFlags.dockerFileName = flags['docker-file-name'];
-        dockerBuildFlags.dryRun = flags['dry-run'];
+        const hash = await hashDirectory(directory);
+        const dockerBuildFlags = this.createBuildFlags(flags);
         this.log(`Running with the following options`, dockerBuildFlags);
         await this.buildFromHash(hash, directory, dockerBuildFlags);
+    }
+
+    private createBuildFlags(flags: any) {
+        // I found that the alias doesn't seem to be working in my deployment
+        // environment. For short term, I'm going to set it using this.
+        flags.imageName = flags['image-name'];
+        flags.dockerFileName = flags['docker-file-name'];
+        flags.dryRun = flags['dry-run'];
+        return flags;
     }
 }

@@ -1,6 +1,6 @@
 import { Expose } from 'class-transformer';
 import { IsString } from 'class-validator';
-import { AliasKey } from '../shared/transforms/alias-keys.transform';
+import { AliasKey } from '../shared/transforms/alias-key.transform';
 
 export class DockerBuildFlags {
     @IsString()

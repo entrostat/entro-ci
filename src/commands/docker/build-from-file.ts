@@ -4,7 +4,7 @@ import * as path from 'path';
 import { hashFile } from '../../modules/shared/helpers/hash-file';
 import { hashFiles } from '../../modules/shared/helpers/hash-files';
 import { plainToClass } from 'class-transformer';
-import { DockerBuildFromBuildFlags } from '../../modules/models/docker-build-from-build-flags';
+import { DockerBuildFromBuildFlags } from '../../modules/models/docker-build-from.build-flags';
 
 export default class DockerBuildFromFile extends BuildImageWorkflowBaseCommand {
     static description =
@@ -56,17 +56,21 @@ export default class DockerBuildFromFile extends BuildImageWorkflowBaseCommand {
         const watchedFilePaths = (flags['watch-file'] || []).map(file => path.resolve(file));
         const hash =
             watchedFilePaths.length > 0
-                ? await hashFiles(watchedFilePaths.concat([filePath]), this.log, this.error)
-                : await hashFile(filePath, this.log, this.error);
-        const modifiedFlags: any = flags;
-        modifiedFlags['docker-file-name'] = path.basename(flags['docker-file-path']);
-        const dockerBuildFromFileFlags = plainToClass(DockerBuildFromBuildFlags, modifiedFlags as object);
-        dockerBuildFromFileFlags.imageName = modifiedFlags['image-name'];
-        dockerBuildFromFileFlags.dockerFileName = modifiedFlags['docker-file-name'];
-        dockerBuildFromFileFlags.dockerFilePath = modifiedFlags['docker-file-path'];
-        dockerBuildFromFileFlags.dryRun = modifiedFlags['dry-run'];
-        dockerBuildFromFileFlags.watchFile = modifiedFlags['watch-file'];
+                ? await hashFiles(watchedFilePaths.concat([filePath]))
+                : await hashFile(filePath);
+        const dockerBuildFromFileFlags = this.createBuildFlags(flags);
         this.log(`Running with the following options`, dockerBuildFromFileFlags);
         await this.buildFromHash(hash, path.dirname(dockerBuildFromFileFlags.dockerFilePath), dockerBuildFromFileFlags);
+    }
+
+    private createBuildFlags(flags: any) {
+        flags['docker-file-name'] = path.basename(flags['docker-file-path']);
+        const dockerBuildFromFileFlags = plainToClass(DockerBuildFromBuildFlags, flags as object);
+        dockerBuildFromFileFlags.imageName = flags['image-name'];
+        dockerBuildFromFileFlags.dockerFileName = flags['docker-file-name'];
+        dockerBuildFromFileFlags.dockerFilePath = flags['docker-file-path'];
+        dockerBuildFromFileFlags.dryRun = flags['dry-run'];
+        dockerBuildFromFileFlags.watchFile = flags['watch-file'];
+        return dockerBuildFromFileFlags;
     }
 }
