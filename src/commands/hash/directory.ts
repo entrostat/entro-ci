@@ -17,7 +17,7 @@ export default class HashDirectory extends BaseCommand {
         if (!args.directory) {
             this.error(`Please specify the directory path...`);
         }
-        const hash = await hashDirectory(args.directory, this.log, this.error);
+        const hash = await hashDirectory(args.directory);
         this.log(hash);
     }
 }
