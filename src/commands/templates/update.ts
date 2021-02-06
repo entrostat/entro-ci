@@ -4,6 +4,7 @@ import * as yaml from 'js-yaml';
 import * as fs from 'fs-extra';
 import { EntroCiYaml } from '../../modules/shared/interfaces/entro-ci-yaml';
 import * as handlebars from 'handlebars';
+import { packageJsonVersion } from '../../modules/shared/helpers/package-json-version';
 
 export default class TemplatesUpdate extends Command {
     static description = `Updates files specified in the entro-ci.yaml file in the repository`;
@@ -41,8 +42,7 @@ export default class TemplatesUpdate extends Command {
         }
 
         const packageJsonPath = path.resolve(flags.package);
-        const packageJson = await fs.readJson(packageJsonPath);
-        const mainVersion = packageJson.version;
+        const mainVersion = await packageJsonVersion(packageJsonPath);
 
         const templates = json.templates || [];
         for (const template of templates) {

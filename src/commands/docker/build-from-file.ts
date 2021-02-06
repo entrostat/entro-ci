@@ -41,6 +41,11 @@ export default class DockerBuildFromFile extends BuildImageWorkflowBaseCommand {
             description:
                 'The tag version that should be pushed to the registry so that it can be used in automated deployments',
         }),
+        package: flags.string({
+            char: 'p',
+            description: 'The path to the package.json that holds the version of the build',
+            default: './package.json',
+        }),
         'dry-run': flags.boolean({
             char: 'R',
             default: false,

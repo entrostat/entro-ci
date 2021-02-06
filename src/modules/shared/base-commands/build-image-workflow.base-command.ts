@@ -5,6 +5,7 @@ import { generateDockerImageName } from '../helpers/docker/docker-image-name-bui
 import { pullDockerImage } from '../helpers/docker/pull-docker-image';
 import { container } from 'tsyringe';
 import { BuildArtefactService, BuildTrigger } from '../services/build-artefact.service';
+import { packageJsonVersion } from '../helpers/package-json-version';
 
 export interface BuildFromHashFlags {
     // The name of the image that is pushed to the registry
@@ -21,6 +22,10 @@ export interface BuildFromHashFlags {
 
     // The tag attached to the image, eg. 'stable', 'latest', 'abc'
     tag: string;
+
+    // The path to the package.json file that has the version of the project
+    // that we're building.
+    package: string;
 }
 
 export abstract class BuildImageWorkflowBaseCommand extends BaseCommand {
@@ -35,6 +40,7 @@ export abstract class BuildImageWorkflowBaseCommand extends BaseCommand {
     async buildFromHash(hash: string, directory: string, flags: BuildFromHashFlags) {
         const buildArtifactService = container.resolve(BuildArtefactService);
         const exists = await this.dockerImageExists(hash, flags);
+        const projectVersion = await packageJsonVersion(flags.package);
         if (exists) {
             const versionExists = await this.dockerImageExists(flags.tag, flags);
             if (versionExists) {
@@ -48,7 +54,7 @@ export abstract class BuildImageWorkflowBaseCommand extends BaseCommand {
             await pushDockerImage({
                 localImageName: existingImageName,
                 imageName: flags.imageName,
-                tags: [flags.tag],
+                tags: [flags.tag, projectVersion],
                 registry: flags.registry,
                 dryRun: flags.dryRun,
             });
@@ -65,7 +71,7 @@ export abstract class BuildImageWorkflowBaseCommand extends BaseCommand {
         // Push the image to the registry
         await pushDockerImage({
             localImageName,
-            tags: this.getTags(hash, flags),
+            tags: this.getTags(hash, flags).concat([projectVersion]),
             imageName: flags.imageName,
             registry: flags.registry,
             dryRun: flags.dryRun,
