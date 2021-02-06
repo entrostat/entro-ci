@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.0](https://github.com/entrostat/entro-ci/compare/v2.0.2...v2.1.0) (2021-02-06)
+
+
+### Features
+
+* **templating:** Added template support for any scripts that should update when the version changes ([893101f](https://github.com/entrostat/entro-ci/commit/893101fa372dfe95a297d113f1a0ce60e5a26d1c)), closes [#2](https://github.com/entrostat/entro-ci/issues/2)
+
 ### [2.0.2](https://github.com/entrostat/entro-ci/compare/v2.0.1...v2.0.2) (2021-02-06)
 
 
