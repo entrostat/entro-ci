@@ -35,4 +35,8 @@ export class DockerBuildFromBuildFlags {
     @Expose()
     @AliasKey('dry-run')
     dryRun: boolean;
+
+    @IsString()
+    @Expose()
+    package: string;
 }

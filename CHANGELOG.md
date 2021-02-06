@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.1.1](https://github.com/entrostat/entro-ci/compare/v2.1.0...v2.1.1) (2021-02-06)
+
+
+### Bug Fixes
+
+* **build:** Ensure that the package key is passed into the build function from all commands ([e9b4c16](https://github.com/entrostat/entro-ci/commit/e9b4c1665d5a9bff3cf658806a58e1428e9dd122))
+
 ## [2.1.0](https://github.com/entrostat/entro-ci/compare/v2.0.2...v2.1.0) (2021-02-06)
 
 
