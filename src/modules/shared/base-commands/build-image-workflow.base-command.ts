@@ -1,6 +1,6 @@
+import { BaseCommand } from './base-command';
 import { buildDockerImage } from '../helpers/docker/build-docker-image';
 import { pushDockerImage } from '../helpers/docker/push-docker-image';
-import { BaseCommand } from './base-command';
 import { generateDockerImageName } from '../helpers/docker/docker-image-name-builder';
 import { pullDockerImage } from '../helpers/docker/pull-docker-image';
 import { container } from 'tsyringe';
