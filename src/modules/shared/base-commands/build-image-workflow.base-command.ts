@@ -3,6 +3,8 @@ import { pushDockerImage } from '../helpers/docker/push-docker-image';
 import { BaseCommand } from './base-command';
 import { generateDockerImageName } from '../helpers/docker/docker-image-name-builder';
 import { pullDockerImage } from '../helpers/docker/pull-docker-image';
+import { container } from 'tsyringe';
+import { BuildArtifactService, BuildTrigger } from '../services/build-artifact.service';
 
 export interface BuildFromHashFlags {
     // The name of the image that is pushed to the registry
@@ -31,8 +33,15 @@ export abstract class BuildImageWorkflowBaseCommand extends BaseCommand {
      * @param flags The flags required during the build process
      */
     async buildFromHash(hash: string, directory: string, flags: BuildFromHashFlags) {
+        const buildArtifactService = container.resolve(BuildArtifactService);
         const exists = await this.dockerImageExists(hash, flags);
         if (exists) {
+            const versionExists = await this.dockerImageExists(flags.tag, flags);
+            if (versionExists) {
+                await buildArtifactService.addBuild(flags.imageName, BuildTrigger.exists);
+            } else {
+                await buildArtifactService.addBuild(flags.imageName, BuildTrigger.hashExists);
+            }
             // If it exists, we don't need to build it again but we should push
             //  it to its new tag.
             const existingImageName = generateDockerImageName(flags.imageName, hash, flags.registry);
@@ -45,7 +54,6 @@ export abstract class BuildImageWorkflowBaseCommand extends BaseCommand {
             });
             return;
         }
-
         // Build the image locally
         const localImageName = await buildDockerImage({
             directory,
@@ -62,6 +70,8 @@ export abstract class BuildImageWorkflowBaseCommand extends BaseCommand {
             registry: flags.registry,
             dryRun: flags.dryRun,
         });
+
+        await buildArtifactService.addBuild(flags.imageName, BuildTrigger.new);
     }
 
     /**
