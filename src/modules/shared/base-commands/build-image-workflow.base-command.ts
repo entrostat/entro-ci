@@ -4,7 +4,7 @@ import { BaseCommand } from './base-command';
 import { generateDockerImageName } from '../helpers/docker/docker-image-name-builder';
 import { pullDockerImage } from '../helpers/docker/pull-docker-image';
 import { container } from 'tsyringe';
-import { BuildArtifactService, BuildTrigger } from '../services/build-artifact.service';
+import { BuildArtefactService, BuildTrigger } from '../services/build-artefact.service';
 
 export interface BuildFromHashFlags {
     // The name of the image that is pushed to the registry
@@ -33,7 +33,7 @@ export abstract class BuildImageWorkflowBaseCommand extends BaseCommand {
      * @param flags The flags required during the build process
      */
     async buildFromHash(hash: string, directory: string, flags: BuildFromHashFlags) {
-        const buildArtifactService = container.resolve(BuildArtifactService);
+        const buildArtifactService = container.resolve(BuildArtefactService);
         const exists = await this.dockerImageExists(hash, flags);
         if (exists) {
             const versionExists = await this.dockerImageExists(flags.tag, flags);

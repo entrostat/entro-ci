@@ -4,7 +4,7 @@ import * as path from 'path';
 import { IConfig } from '@oclif/config';
 import { container } from 'tsyringe';
 import { Logger } from '../services/logger';
-import { BuildArtifactService } from '../services/build-artifact.service';
+import { BuildArtefactService } from '../services/build-artefact.service';
 
 export abstract class BaseCommand extends Command {
     constructor(argv: string[], config: IConfig) {
@@ -16,7 +16,7 @@ export abstract class BaseCommand extends Command {
         const logger = container.resolve(Logger);
         logger.extractLoggers(this);
 
-        const buildArtifactService = container.resolve(BuildArtifactService);
+        const buildArtifactService = container.resolve(BuildArtefactService);
         buildArtifactService.setConfigDirectory(this.config.configDir);
     }
 

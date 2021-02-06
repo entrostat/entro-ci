@@ -1,7 +1,6 @@
-import { container, singleton } from 'tsyringe';
+import { singleton } from 'tsyringe';
 import * as fs from 'fs-extra';
 import * as path from 'path';
-import { Logger } from './logger';
 
 export enum BuildTrigger {
     exists = 'exists',
@@ -10,13 +9,13 @@ export enum BuildTrigger {
 }
 
 @singleton()
-export class BuildArtifactService {
+export class BuildArtefactService {
     private configDirectory: string;
-    private artifactPath: string;
+    private artefactPath: string;
 
     setConfigDirectory(configDirectory: string) {
         this.configDirectory = configDirectory;
-        this.artifactPath = path.join(this.configDirectory, 'build.json');
+        this.artefactPath = path.join(this.configDirectory, 'build.json');
     }
 
     /**
@@ -27,16 +26,16 @@ export class BuildArtifactService {
     async addBuild(label: string, buildTrigger: BuildTrigger) {
         // Create directory if it doesn't work
         await fs.mkdirp(this.configDirectory);
-        const currentArtifacts = await this.getCurrentArtifacts();
-        await fs.writeJson(this.artifactPath, {
+        const currentArtifacts = await this.getCurrentArtefacts();
+        await fs.writeJson(this.artefactPath, {
             ...currentArtifacts,
             [label]: buildTrigger,
         });
     }
 
-    private async getCurrentArtifacts() {
+    private async getCurrentArtefacts() {
         try {
-            return await fs.readJson(this.artifactPath, {
+            return await fs.readJson(this.artefactPath, {
                 throws: false,
             });
         } catch (e) {
