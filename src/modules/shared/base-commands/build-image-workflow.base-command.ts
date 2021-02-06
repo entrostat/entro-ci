@@ -58,13 +58,12 @@ export abstract class BuildImageWorkflowBaseCommand extends BaseCommand {
         }
 
         // Build the image locally
-        const localImageName = await buildDockerImage(
+        const localImageName = await buildDockerImage({
             directory,
-            flags.imageName,
-            flags.dockerFileName,
-            flags.registry,
-            flags.dryRun,
-        );
+            imageName: flags.imageName,
+            dryRun: flags.dryRun,
+            dockerFileName: flags.dockerFileName,
+        });
 
         // Push the image to the registry
         await pushDockerImage(localImageName, this.getTags(hash, flags), flags.imageName, flags.dryRun, flags.registry);
