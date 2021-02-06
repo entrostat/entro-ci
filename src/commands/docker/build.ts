@@ -51,7 +51,7 @@ export default class DockerBuild extends BuildImageWorkflowBaseCommand {
     async run() {
         const { flags } = this.parse(DockerBuild);
         const directory = path.resolve(flags.directory);
-        const hash = await hashDirectory(directory, this.log, this.error);
+        const hash = await hashDirectory(directory);
         const dockerBuildFlags = plainToClass(DockerBuildFlags, flags);
         // I found that the alias doesn't seem to be working in my deployment
         // environment. For short term, I'm going to set it using this.
