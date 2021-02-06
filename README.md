@@ -33,6 +33,7 @@ USAGE
 * [`entro-ci hash:directory [DIRECTORY]`](#entro-ci-hashdirectory-directory)
 * [`entro-ci help [COMMAND]`](#entro-ci-help-command)
 * [`entro-ci kube:deployment:update DEPLOYMENT [NAMESPACE]`](#entro-ci-kubedeploymentupdate-deployment-namespace)
+* [`entro-ci templates:update [FILE]`](#entro-ci-templatesupdate-file)
 
 ## `entro-ci docker:build`
 
@@ -139,4 +140,20 @@ ALIASES
 ```
 
 _See code: [src/commands/kube/deployment/update.ts](https://github.com/entrostat/entro-ci/blob/v2.0.2/src/commands/kube/deployment/update.ts)_
+
+## `entro-ci templates:update [FILE]`
+
+describe the command here
+
+```
+USAGE
+  $ entro-ci templates:update [FILE]
+
+OPTIONS
+  -f, --force
+  -h, --help       show CLI help
+  -n, --name=name  name to print
+```
+
+_See code: [src/commands/templates/update.ts](https://github.com/entrostat/entro-ci/blob/v2.0.2/src/commands/templates/update.ts)_
 <!-- commandsstop -->
