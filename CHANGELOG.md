@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.2](https://github.com/entrostat/entro-ci/compare/v2.0.1...v2.0.2) (2021-02-06)
+
+
+### Bug Fixes
+
+* **reflect-metadata:** Added the import for reflect-metadata to ensure that the CLI builds and runs correctly ([3483c95](https://github.com/entrostat/entro-ci/commit/3483c958bf3801901c0fb97f3b2da161a223b6be))
+
 ### [2.0.1](https://github.com/entrostat/entro-ci/compare/v2.0.0...v2.0.1) (2021-02-06)
 
 
