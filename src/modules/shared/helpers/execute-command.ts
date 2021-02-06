@@ -1,4 +1,4 @@
-import { exec } from 'child_process';
+import { spawn } from 'child_process';
 import { container } from 'tsyringe';
 import { Logger } from '../services/logger';
 
@@ -10,15 +10,24 @@ export async function executeCommand(command: string, dryRun = false): Promise<s
     }
     return new Promise((resolve, reject) => {
         logger.log(`${command}`);
-        exec(command, (err, stdout, stderr) => {
-            if (err) {
-                logger.error(`An ERROR has occurred:\n${stderr}`);
-                return reject(stderr);
-            }
-            if (stdout) {
-                logger.log(stdout);
-            }
-            return resolve(stdout);
+        const cmd = spawn(command);
+        let stdout = '';
+        let stderr = '';
+        cmd.stdout.on('data', data => {
+            logger.log(data);
+            stdout += data;
+        });
+        cmd.stderr.on('data', data => {
+            logger.warn(data);
+            stderr += data;
+        });
+        cmd.on('error', data => {
+            logger.error(data);
+            reject(stderr);
+        });
+        cmd.on('close', code => {
+            logger.log(`Completed with code ${code}`);
+            resolve(stdout);
         });
     });
 }
