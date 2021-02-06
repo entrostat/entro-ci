@@ -4,13 +4,15 @@ import cli from 'cli-ux';
 import { container } from 'tsyringe';
 import { Logger } from '../../services/logger';
 
-export async function pushDockerImage(
-    localImageName: string,
-    tags: string[],
-    imageName: string,
-    dryRun: boolean,
-    registry?: string,
-) {
+export interface PushDockerImageParams {
+    localImageName: string;
+    tags: string[];
+    imageName: string;
+    dryRun: boolean;
+    registry: string;
+}
+
+export async function pushDockerImage({ localImageName, tags, imageName, dryRun, registry }: PushDockerImageParams) {
     const logger = container.resolve(Logger);
     for (const tag of tags) {
         const dockerImageName = generateDockerImageName(imageName, tag, registry);
