@@ -27,8 +27,6 @@ export default class KubeDeploymentUpdate extends BaseCommand {
         this.log(`Updating deployment ${args.deployment}`);
         await executeCommand(
             `kubectl patch deployment "${args.deployment}" --namespace=${args.namespace} -p "{\\"spec\\":{\\"template\\":{\\"metadata\\":{\\"labels\\":{\\"date\\":\\"\`date +'%s'\`\\"}}}}}"`,
-            this.log,
-            this.error,
         );
     }
 }

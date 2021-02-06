@@ -61,23 +61,13 @@ export abstract class BuildImageWorkflowBaseCommand extends BaseCommand {
         const localImageName = await buildDockerImage(
             directory,
             flags.imageName,
-            this.log,
-            this.warn,
             flags.dockerFileName,
             flags.registry,
             flags.dryRun,
         );
 
         // Push the image to the registry
-        await pushDockerImage(
-            localImageName,
-            this.getTags(hash, flags),
-            flags.imageName,
-            this.log,
-            this.warn,
-            flags.dryRun,
-            flags.registry,
-        );
+        await pushDockerImage(localImageName, this.getTags(hash, flags), flags.imageName, flags.dryRun, flags.registry);
 
         // Set the hash now that it has been built
         await setHashValue(
@@ -123,21 +113,13 @@ export abstract class BuildImageWorkflowBaseCommand extends BaseCommand {
                 // This was built before, we just need to pull it so that we can
                 // push it under a different image name
                 this.log(`Pulling the base image from the registry`);
-                await pullDockerImage(hash, flags.imageName, this.log, this.warn, flags.registry, flags.dryRun);
+                await pullDockerImage(hash, flags.imageName, flags.registry, flags.dryRun);
             } catch (e) {
                 this.log(`Failed to pull the image so we'll just build it!`);
             }
         }
         const baseImageName = generateDockerImageName(flags.imageName, hash, flags.registry);
-        await pushDockerImage(
-            baseImageName,
-            this.getTags(hash, flags),
-            flags.imageName,
-            this.log,
-            this.warn,
-            flags.dryRun,
-            flags.registry,
-        );
+        await pushDockerImage(baseImageName, this.getTags(hash, flags), flags.imageName, flags.dryRun, flags.registry);
         await setHashValue(
             imageHash,
             {

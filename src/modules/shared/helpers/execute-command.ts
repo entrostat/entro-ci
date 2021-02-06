@@ -1,24 +1,22 @@
 import { exec } from 'child_process';
+import { container } from 'tsyringe';
+import { Logger } from '../services/logger';
 
-export async function executeCommand(
-    command: string,
-    log: (message: string) => void,
-    error: (message: string) => void,
-    dryRun = false,
-): Promise<string> {
+export async function executeCommand(command: string, dryRun = false): Promise<string> {
+    const logger = container.resolve(Logger);
     if (dryRun) {
-        log(command);
+        logger.log(command);
         return '';
     }
     return new Promise((resolve, reject) => {
-        log(`${command}`);
+        logger.log(`${command}`);
         exec(command, (err, stdout, stderr) => {
             if (err) {
-                error(`An ERROR has occurred:\n${stderr}`);
+                logger.error(`An ERROR has occurred:\n${stderr}`);
                 return reject(stderr);
             }
             if (stdout) {
-                log(stdout);
+                logger.log(stdout);
             }
             return resolve(stdout);
         });
