@@ -1,7 +1,7 @@
-import { Command, flags } from '@oclif/command';
 import { hashDirectory } from '../../modules/shared/helpers/hash-directory';
+import { BaseCommand } from '../../modules/shared/base-commands/base-command';
 
-export default class HashDirectory extends Command {
+export default class HashDirectory extends BaseCommand {
     static description = 'Generates the hash of a directory and outputs it to screen.';
 
     static flags = {};
@@ -17,7 +17,7 @@ export default class HashDirectory extends Command {
         if (!args.directory) {
             this.error(`Please specify the directory path...`);
         }
-        const hash = await hashDirectory(args.directory, this.log, this.error);
+        const hash = await hashDirectory(args.directory);
         this.log(hash);
     }
 }
