@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.1](https://github.com/entrostat/entro-ci/compare/v2.0.0...v2.0.1) (2021-02-06)
+
+
+### Bug Fixes
+
+* **logger:** Use the logger instead of passing parameters ([6de012b](https://github.com/entrostat/entro-ci/commit/6de012b0f5f7f47328bdb5191132cbfdb86cb6ce))
+
 ## [2.0.0](https://github.com/entrostat/entro-ci/compare/v1.5.7...v2.0.0) (2021-02-06)
 
 
