@@ -1,6 +1,7 @@
-import { singleton } from 'tsyringe';
+import { container, singleton } from 'tsyringe';
 import * as fs from 'fs-extra';
 import * as path from 'path';
+import { Logger } from './logger';
 
 export enum BuildTrigger {
     exists = 'exists',
@@ -35,7 +36,9 @@ export class BuildArtifactService {
 
     private async getCurrentArtifacts() {
         try {
-            return fs.readJson(this.artifactPath);
+            return await fs.readJson(this.artifactPath, {
+                throws: false,
+            });
         } catch (e) {
             return {};
         }
