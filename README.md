@@ -19,7 +19,7 @@ $ npm install -g entro-ci
 $ entro-ci COMMAND
 running command...
 $ entro-ci (-v|--version|version)
-entro-ci/2.0.1 linux-x64 node-v14.15.0
+entro-ci/2.0.2 linux-x64 node-v14.15.0
 $ entro-ci --help [COMMAND]
 USAGE
   $ entro-ci COMMAND
@@ -59,7 +59,7 @@ EXAMPLES
   entro-ci docker:build --directory=./backend --image-name=my-repo/my-image --tag=stable
 ```
 
-_See code: [src/commands/docker/build.ts](https://github.com/entrostat/entro-ci/blob/v2.0.1/src/commands/docker/build.ts)_
+_See code: [src/commands/docker/build.ts](https://github.com/entrostat/entro-ci/blob/v2.0.2/src/commands/docker/build.ts)_
 
 ## `entro-ci docker:build-from-file`
 
@@ -89,7 +89,7 @@ EXAMPLES
   --watch-file=./backend/package.json --watch-file=./backend/manifest.json --tag=stable
 ```
 
-_See code: [src/commands/docker/build-from-file.ts](https://github.com/entrostat/entro-ci/blob/v2.0.1/src/commands/docker/build-from-file.ts)_
+_See code: [src/commands/docker/build-from-file.ts](https://github.com/entrostat/entro-ci/blob/v2.0.2/src/commands/docker/build-from-file.ts)_
 
 ## `entro-ci hash:directory [DIRECTORY]`
 
@@ -100,7 +100,7 @@ USAGE
   $ entro-ci hash:directory [DIRECTORY]
 ```
 
-_See code: [src/commands/hash/directory.ts](https://github.com/entrostat/entro-ci/blob/v2.0.1/src/commands/hash/directory.ts)_
+_See code: [src/commands/hash/directory.ts](https://github.com/entrostat/entro-ci/blob/v2.0.2/src/commands/hash/directory.ts)_
 
 ## `entro-ci help [COMMAND]`
 
@@ -138,5 +138,5 @@ ALIASES
   $ entro-ci kdu
 ```
 
-_See code: [src/commands/kube/deployment/update.ts](https://github.com/entrostat/entro-ci/blob/v2.0.1/src/commands/kube/deployment/update.ts)_
+_See code: [src/commands/kube/deployment/update.ts](https://github.com/entrostat/entro-ci/blob/v2.0.2/src/commands/kube/deployment/update.ts)_
 <!-- commandsstop -->
