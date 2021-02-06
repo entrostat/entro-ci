@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/entrostat/entro-ci/compare/v1.5.7...v2.0.0) (2021-02-06)
+
+
+### Features
+
+* **docker-build:** Completely changed the build process to only use the docker registry to determine if something has been built and added the ability to track whether or not the build happened now. ([2c2feb9](https://github.com/entrostat/entro-ci/commit/2c2feb95221b451a6330f1ff21cc2cce72108af5)), closes [#1](https://github.com/entrostat/entro-ci/issues/1)
+
 ### [1.5.7](https://github.com/entrostat/entro-ci/compare/v1.5.6...v1.5.7) (2021-01-21)
 
 
