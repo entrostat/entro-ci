@@ -47,6 +47,12 @@ export default class DockerBuild extends BuildImageWorkflowBaseCommand {
             default: false,
             description: 'Whether to run this live or do a dry run',
         }),
+        'watch-directory': flags.string({
+            char: 'w',
+            required: false,
+            multiple: true,
+            description: `Directories that should be watched to trigger the build. Note, if you set this then it IGNORES the build directory so you'd have to add that here as well.`,
+        }),
     };
 
     static args = [];
