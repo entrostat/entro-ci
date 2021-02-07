@@ -1,11 +1,16 @@
 import { singleton } from 'tsyringe';
 import * as fs from 'fs-extra';
 import * as path from 'path';
+import { plainToClass } from 'class-transformer';
 
 export enum BuildTrigger {
     exists = 'exists',
     new = 'new',
     hashExists = 'hashExists',
+}
+
+export class BuildArtefactState {
+    buildState: { [imageName: string]: BuildTrigger };
 }
 
 @singleton()
@@ -29,11 +34,18 @@ export class BuildArtefactService {
         const currentArtifacts = await this.getCurrentArtefacts();
         await fs.writeJson(this.artefactPath, {
             ...currentArtifacts,
-            [label]: buildTrigger,
+            buildState: {
+                ...(currentArtifacts.buildState || {}),
+                [label]: buildTrigger,
+            },
         });
     }
 
     private async getCurrentArtefacts() {
+        return plainToClass(BuildArtefactState, await this.readCurrentArtefactsFromFs());
+    }
+
+    private async readCurrentArtefactsFromFs(): Promise<object> {
         try {
             return await fs.readJson(this.artefactPath, {
                 throws: false,
