@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.3.1](https://github.com/entrostat/entro-ci/compare/v2.3.0...v2.3.1) (2021-02-07)
+
+
+### Bug Fixes
+
+* **buill-command:** Default the watch directories to an empty array ([424dd3c](https://github.com/entrostat/entro-ci/commit/424dd3c2e359cc48638565b4cc3f84353cd724d2))
+
 ## [2.3.0](https://github.com/entrostat/entro-ci/compare/v2.2.0...v2.3.0) (2021-02-07)
 
 
