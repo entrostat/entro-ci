@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.3.0](https://github.com/entrostat/entro-ci/compare/v2.2.0...v2.3.0) (2021-02-07)
+
+
+### Features
+
+* **watch:** Added the ability to watch directories during the build (ie. we don't trigger on the build directory but on a subset) ([3ee619b](https://github.com/entrostat/entro-ci/commit/3ee619b3b1bc8af0c759209ce713dabc4b8246bd)), closes [#4](https://github.com/entrostat/entro-ci/issues/4)
+
 ## [2.2.0](https://github.com/entrostat/entro-ci/compare/v2.1.1...v2.2.0) (2021-02-07)
 
 
