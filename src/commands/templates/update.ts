@@ -9,6 +9,8 @@ import { packageJsonVersion } from '../../modules/shared/helpers/package-json-ve
 export default class TemplatesUpdate extends Command {
     static description = `Updates files specified in the entro-ci.yaml file in the repository`;
 
+    static examples = [`entro-ci templates:update`, `entro-ci templates:update -f .templates.yaml`];
+
     static flags = {
         file: flags.string({
             char: 'f',
