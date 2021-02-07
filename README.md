@@ -19,7 +19,7 @@ $ npm install -g entro-ci
 $ entro-ci COMMAND
 running command...
 $ entro-ci (-v|--version|version)
-entro-ci/2.2.0 linux-x64 node-v14.15.0
+entro-ci/2.3.0 linux-x64 node-v14.15.0
 $ entro-ci --help [COMMAND]
 USAGE
   $ entro-ci COMMAND
@@ -30,7 +30,7 @@ USAGE
 <!-- commands -->
 * [`entro-ci docker:build`](#entro-ci-dockerbuild)
 * [`entro-ci docker:build-from-file`](#entro-ci-dockerbuild-from-file)
-* [`entro-ci hash:directory [DIRECTORY]`](#entro-ci-hashdirectory-directory)
+* [`entro-ci hash:directory DIRECTORY`](#entro-ci-hashdirectory-directory)
 * [`entro-ci help [COMMAND]`](#entro-ci-help-command)
 * [`entro-ci kube:deployment:update DEPLOYMENT [NAMESPACE]`](#entro-ci-kubedeploymentupdate-deployment-namespace)
 * [`entro-ci templates:update`](#entro-ci-templatesupdate)
@@ -60,11 +60,20 @@ OPTIONS
   -t, --tag=tag                            The tag version that should be pushed to the registry so that it can be used
                                            in automated deployments
 
+  -w, --watch-directory=watch-directory    Directories that should be watched to trigger the build. Note, if you set
+                                           this then it IGNORES the build directory so you'd have to add that here as
+                                           well.
+
 EXAMPLES
   entro-ci docker:build --directory=./backend --image-name=my-repo/my-image --tag=stable
+  entro-ci docker:build --directory=./backend --image-name=my-repo/my-image --tag=stable --watch-directory=./backend/src
+  entro-ci docker:build --directory=./backend --image-name=my-repo/my-image --tag=stable --watch-directory=./backend/src 
+  --watch-directory=./backend/migrations
+  entro-ci docker:build --directory=./backend --image-name=my-repo/my-image --tag=stable 
+  --watch-directory=./project/shared --watch-directory=./backend
 ```
 
-_See code: [src/commands/docker/build.ts](https://github.com/entrostat/entro-ci/blob/v2.2.0/src/commands/docker/build.ts)_
+_See code: [src/commands/docker/build.ts](https://github.com/entrostat/entro-ci/blob/v2.3.0/src/commands/docker/build.ts)_
 
 ## `entro-ci docker:build-from-file`
 
@@ -97,18 +106,21 @@ EXAMPLES
   --watch-file=./backend/package.json --watch-file=./backend/manifest.json --tag=stable
 ```
 
-_See code: [src/commands/docker/build-from-file.ts](https://github.com/entrostat/entro-ci/blob/v2.2.0/src/commands/docker/build-from-file.ts)_
+_See code: [src/commands/docker/build-from-file.ts](https://github.com/entrostat/entro-ci/blob/v2.3.0/src/commands/docker/build-from-file.ts)_
 
-## `entro-ci hash:directory [DIRECTORY]`
+## `entro-ci hash:directory DIRECTORY`
 
 Generates the hash of a directory and outputs it to screen.
 
 ```
 USAGE
-  $ entro-ci hash:directory [DIRECTORY]
+  $ entro-ci hash:directory DIRECTORY
+
+ARGUMENTS
+  DIRECTORY  The directory that we're hashing
 ```
 
-_See code: [src/commands/hash/directory.ts](https://github.com/entrostat/entro-ci/blob/v2.2.0/src/commands/hash/directory.ts)_
+_See code: [src/commands/hash/directory.ts](https://github.com/entrostat/entro-ci/blob/v2.3.0/src/commands/hash/directory.ts)_
 
 ## `entro-ci help [COMMAND]`
 
@@ -146,7 +158,7 @@ ALIASES
   $ entro-ci kdu
 ```
 
-_See code: [src/commands/kube/deployment/update.ts](https://github.com/entrostat/entro-ci/blob/v2.2.0/src/commands/kube/deployment/update.ts)_
+_See code: [src/commands/kube/deployment/update.ts](https://github.com/entrostat/entro-ci/blob/v2.3.0/src/commands/kube/deployment/update.ts)_
 
 ## `entro-ci templates:update`
 
@@ -164,9 +176,13 @@ OPTIONS
 
   -p, --package=package              [default: ./package.json] The path of the package.json file that holds the current
                                      version
+
+EXAMPLES
+  entro-ci templates:update
+  entro-ci templates:update -f .templates.yaml
 ```
 
-_See code: [src/commands/templates/update.ts](https://github.com/entrostat/entro-ci/blob/v2.2.0/src/commands/templates/update.ts)_
+_See code: [src/commands/templates/update.ts](https://github.com/entrostat/entro-ci/blob/v2.3.0/src/commands/templates/update.ts)_
 
 ## `entro-ci trigger:post-build`
 
@@ -193,5 +209,5 @@ EXAMPLES
   --all-true
 ```
 
-_See code: [src/commands/trigger/post-build.ts](https://github.com/entrostat/entro-ci/blob/v2.2.0/src/commands/trigger/post-build.ts)_
+_See code: [src/commands/trigger/post-build.ts](https://github.com/entrostat/entro-ci/blob/v2.3.0/src/commands/trigger/post-build.ts)_
 <!-- commandsstop -->
