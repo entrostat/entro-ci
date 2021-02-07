@@ -1,7 +1,7 @@
 import { singleton } from 'tsyringe';
 import * as fs from 'fs-extra';
 import * as path from 'path';
-import { plainToClass } from 'class-transformer';
+import { Expose, plainToClass, Type } from 'class-transformer';
 
 export enum BuildTrigger {
     exists = 'exists',
@@ -9,8 +9,14 @@ export enum BuildTrigger {
     hashExists = 'hashExists',
 }
 
+export class ImageBuildStates {
+    [imageName: string]: BuildTrigger;
+}
+
 export class BuildArtefactState {
-    buildState: { [imageName: string]: BuildTrigger };
+    @Expose()
+    @Type(() => ImageBuildStates)
+    buildState: ImageBuildStates;
 }
 
 @singleton()
@@ -41,7 +47,7 @@ export class BuildArtefactService {
         });
     }
 
-    private async getCurrentArtefacts() {
+    async getCurrentArtefacts() {
         return plainToClass(BuildArtefactState, await this.readCurrentArtefactsFromFs());
     }
 
