@@ -2,13 +2,19 @@ import { flags } from '@oclif/command';
 import { hashDirectory } from '../../modules/shared/helpers/hash-directory';
 import * as path from 'path';
 import { BuildImageWorkflowBaseCommand } from '../../modules/shared/base-commands/build-image-workflow.base-command';
+import { hashDirectories } from '../../modules/shared/helpers/hash-directories';
 
 export default class DockerBuild extends BuildImageWorkflowBaseCommand {
     static description =
         'Checks if the Docker image has been built before and if it has not then it will build it and push it with the' +
         ' hash to the Docker registry';
 
-    static example = `entro-ci docker:build --directory=./backend --image-name=my-repo/my-image --tag=stable`;
+    static examples = [
+        `entro-ci docker:build --directory=./backend --image-name=my-repo/my-image --tag=stable`,
+        `entro-ci docker:build --directory=./backend --image-name=my-repo/my-image --tag=stable --watch-directory=./backend/src`,
+        `entro-ci docker:build --directory=./backend --image-name=my-repo/my-image --tag=stable --watch-directory=./backend/src --watch-directory=./backend/migrations`,
+        `entro-ci docker:build --directory=./backend --image-name=my-repo/my-image --tag=stable --watch-directory=./project/shared --watch-directory=./backend`,
+    ];
 
     static flags = {
         directory: flags.string({
@@ -60,7 +66,13 @@ export default class DockerBuild extends BuildImageWorkflowBaseCommand {
     async run() {
         const { flags } = this.parse(DockerBuild);
         const directory = path.resolve(flags.directory);
-        const hash = await hashDirectory(directory);
+
+        const watchDirectories = flags['watch-directory'];
+        // We override the hash that's generated depending on whether or not the
+        //  watch directories flag has been set.
+        const hash =
+            watchDirectories.length > 0 ? await hashDirectories(watchDirectories) : await hashDirectory(directory);
+
         const dockerBuildFlags = this.createBuildFlags(flags);
         this.log(`Running with the following options`, dockerBuildFlags);
         await this.buildFromHash(hash, directory, Object.freeze(dockerBuildFlags) as any);
@@ -72,6 +84,7 @@ export default class DockerBuild extends BuildImageWorkflowBaseCommand {
         flags.imageName = flags['image-name'];
         flags.dockerFileName = flags['docker-file-name'];
         flags.dryRun = flags['dry-run'];
+        flags.watchDirectories = flags['watch-directory'];
         return flags;
     }
 }
