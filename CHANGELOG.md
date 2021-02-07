@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.4.0](https://github.com/entrostat/entro-ci/compare/v2.3.1...v2.4.0) (2021-02-07)
+
+
+### Features
+
+* **tags:** Append the version to the tag so that we can track versions on tag and not replace the overall version ([ad1b39c](https://github.com/entrostat/entro-ci/commit/ad1b39c521836ec1f87ad2016e8108e43576e3a7))
+
 ### [2.3.1](https://github.com/entrostat/entro-ci/compare/v2.3.0...v2.3.1) (2021-02-07)
 
 
