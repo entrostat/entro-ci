@@ -65,7 +65,11 @@ export default class DockerBuildFromFile extends BuildImageWorkflowBaseCommand {
                 : await hashFile(filePath);
         const dockerBuildFromFileFlags = this.createBuildFlags(flags);
         this.log(`Running with the following options`, dockerBuildFromFileFlags);
-        await this.buildFromHash(hash, path.dirname(dockerBuildFromFileFlags.dockerFilePath), dockerBuildFromFileFlags);
+        await this.buildFromHash(
+            hash,
+            path.dirname(dockerBuildFromFileFlags.dockerFilePath),
+            Object.freeze(dockerBuildFromFileFlags),
+        );
     }
 
     private createBuildFlags(flags: any) {
