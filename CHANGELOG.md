@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.2.0](https://github.com/entrostat/entro-ci/compare/v2.1.1...v2.2.0) (2021-02-07)
+
+
+### Features
+
+* **build-triggers:** Added a post-build trigger that lets you run a script if the image was built ([5d67557](https://github.com/entrostat/entro-ci/commit/5d67557b3401dbefd618e9403d0c5bc2c870dafd)), closes [#3](https://github.com/entrostat/entro-ci/issues/3)
+
 ### [2.1.1](https://github.com/entrostat/entro-ci/compare/v2.1.0...v2.1.1) (2021-02-06)
 
 
