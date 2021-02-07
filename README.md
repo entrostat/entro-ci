@@ -19,7 +19,7 @@ $ npm install -g entro-ci
 $ entro-ci COMMAND
 running command...
 $ entro-ci (-v|--version|version)
-entro-ci/2.0.2 linux-x64 node-v14.15.0
+entro-ci/2.1.1 linux-x64 node-v14.15.0
 $ entro-ci --help [COMMAND]
 USAGE
   $ entro-ci COMMAND
@@ -33,7 +33,7 @@ USAGE
 * [`entro-ci hash:directory [DIRECTORY]`](#entro-ci-hashdirectory-directory)
 * [`entro-ci help [COMMAND]`](#entro-ci-help-command)
 * [`entro-ci kube:deployment:update DEPLOYMENT [NAMESPACE]`](#entro-ci-kubedeploymentupdate-deployment-namespace)
-* [`entro-ci templates:update [FILE]`](#entro-ci-templatesupdate-file)
+* [`entro-ci templates:update`](#entro-ci-templatesupdate)
 
 ## `entro-ci docker:build`
 
@@ -51,6 +51,9 @@ OPTIONS
   -i, --image-name=image-name              (required) The name of the Docker image name without the version on it, eg:
                                            entrostat/entro-ci is correct and entrostat/entro-ci:latest is not valid
 
+  -p, --package=package                    [default: ./package.json] The path to the package.json that holds the version
+                                           of the build
+
   -r, --registry=registry                  The registry that should be used (by default Docker Hub is used)
 
   -t, --tag=tag                            The tag version that should be pushed to the registry so that it can be used
@@ -60,7 +63,7 @@ EXAMPLES
   entro-ci docker:build --directory=./backend --image-name=my-repo/my-image --tag=stable
 ```
 
-_See code: [src/commands/docker/build.ts](https://github.com/entrostat/entro-ci/blob/v2.0.2/src/commands/docker/build.ts)_
+_See code: [src/commands/docker/build.ts](https://github.com/entrostat/entro-ci/blob/v2.1.1/src/commands/docker/build.ts)_
 
 ## `entro-ci docker:build-from-file`
 
@@ -77,6 +80,9 @@ OPTIONS
   -i, --image-name=image-name              (required) The name of the Docker image name without the version on it, eg:
                                            entrostat/entro-ci is correct and entrostat/entro-ci:latest is not valid
 
+  -p, --package=package                    [default: ./package.json] The path to the package.json that holds the version
+                                           of the build
+
   -r, --registry=registry                  The registry that should be used (by default Docker Hub is used)
 
   -t, --tag=tag                            The tag version that should be pushed to the registry so that it can be used
@@ -90,7 +96,7 @@ EXAMPLES
   --watch-file=./backend/package.json --watch-file=./backend/manifest.json --tag=stable
 ```
 
-_See code: [src/commands/docker/build-from-file.ts](https://github.com/entrostat/entro-ci/blob/v2.0.2/src/commands/docker/build-from-file.ts)_
+_See code: [src/commands/docker/build-from-file.ts](https://github.com/entrostat/entro-ci/blob/v2.1.1/src/commands/docker/build-from-file.ts)_
 
 ## `entro-ci hash:directory [DIRECTORY]`
 
@@ -101,7 +107,7 @@ USAGE
   $ entro-ci hash:directory [DIRECTORY]
 ```
 
-_See code: [src/commands/hash/directory.ts](https://github.com/entrostat/entro-ci/blob/v2.0.2/src/commands/hash/directory.ts)_
+_See code: [src/commands/hash/directory.ts](https://github.com/entrostat/entro-ci/blob/v2.1.1/src/commands/hash/directory.ts)_
 
 ## `entro-ci help [COMMAND]`
 
@@ -139,21 +145,25 @@ ALIASES
   $ entro-ci kdu
 ```
 
-_See code: [src/commands/kube/deployment/update.ts](https://github.com/entrostat/entro-ci/blob/v2.0.2/src/commands/kube/deployment/update.ts)_
+_See code: [src/commands/kube/deployment/update.ts](https://github.com/entrostat/entro-ci/blob/v2.1.1/src/commands/kube/deployment/update.ts)_
 
-## `entro-ci templates:update [FILE]`
+## `entro-ci templates:update`
 
-describe the command here
+Updates files specified in the entro-ci.yaml file in the repository
 
 ```
 USAGE
-  $ entro-ci templates:update [FILE]
+  $ entro-ci templates:update
 
 OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
+  -V, --outputVersion=outputVersion  The version that you want to set (if you don't want to use the version in the
+                                     package.json)
+
+  -f, --file=file                    [default: ./entro-ci.yaml] The path to the yaml file with the config
+
+  -p, --package=package              [default: ./package.json] The path of the package.json file that holds the current
+                                     version
 ```
 
-_See code: [src/commands/templates/update.ts](https://github.com/entrostat/entro-ci/blob/v2.0.2/src/commands/templates/update.ts)_
+_See code: [src/commands/templates/update.ts](https://github.com/entrostat/entro-ci/blob/v2.1.1/src/commands/templates/update.ts)_
 <!-- commandsstop -->

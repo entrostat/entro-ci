@@ -57,7 +57,7 @@ export default class DockerBuild extends BuildImageWorkflowBaseCommand {
         const hash = await hashDirectory(directory);
         const dockerBuildFlags = this.createBuildFlags(flags);
         this.log(`Running with the following options`, dockerBuildFlags);
-        await this.buildFromHash(hash, directory, dockerBuildFlags);
+        await this.buildFromHash(hash, directory, Object.freeze(dockerBuildFlags) as any);
     }
 
     private createBuildFlags(flags: any) {
