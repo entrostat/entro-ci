@@ -67,7 +67,7 @@ export default class DockerBuild extends BuildImageWorkflowBaseCommand {
         const { flags } = this.parse(DockerBuild);
         const directory = path.resolve(flags.directory);
 
-        const watchDirectories = flags['watch-directory'];
+        const watchDirectories = flags['watch-directory'] || [];
         // We override the hash that's generated depending on whether or not the
         //  watch directories flag has been set.
         const hash =
