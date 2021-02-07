@@ -19,7 +19,7 @@ $ npm install -g entro-ci
 $ entro-ci COMMAND
 running command...
 $ entro-ci (-v|--version|version)
-entro-ci/2.1.1 linux-x64 node-v14.15.0
+entro-ci/2.2.0 linux-x64 node-v14.15.0
 $ entro-ci --help [COMMAND]
 USAGE
   $ entro-ci COMMAND
@@ -34,6 +34,7 @@ USAGE
 * [`entro-ci help [COMMAND]`](#entro-ci-help-command)
 * [`entro-ci kube:deployment:update DEPLOYMENT [NAMESPACE]`](#entro-ci-kubedeploymentupdate-deployment-namespace)
 * [`entro-ci templates:update`](#entro-ci-templatesupdate)
+* [`entro-ci trigger:post-build`](#entro-ci-triggerpost-build)
 
 ## `entro-ci docker:build`
 
@@ -63,7 +64,7 @@ EXAMPLES
   entro-ci docker:build --directory=./backend --image-name=my-repo/my-image --tag=stable
 ```
 
-_See code: [src/commands/docker/build.ts](https://github.com/entrostat/entro-ci/blob/v2.1.1/src/commands/docker/build.ts)_
+_See code: [src/commands/docker/build.ts](https://github.com/entrostat/entro-ci/blob/v2.2.0/src/commands/docker/build.ts)_
 
 ## `entro-ci docker:build-from-file`
 
@@ -96,7 +97,7 @@ EXAMPLES
   --watch-file=./backend/package.json --watch-file=./backend/manifest.json --tag=stable
 ```
 
-_See code: [src/commands/docker/build-from-file.ts](https://github.com/entrostat/entro-ci/blob/v2.1.1/src/commands/docker/build-from-file.ts)_
+_See code: [src/commands/docker/build-from-file.ts](https://github.com/entrostat/entro-ci/blob/v2.2.0/src/commands/docker/build-from-file.ts)_
 
 ## `entro-ci hash:directory [DIRECTORY]`
 
@@ -107,7 +108,7 @@ USAGE
   $ entro-ci hash:directory [DIRECTORY]
 ```
 
-_See code: [src/commands/hash/directory.ts](https://github.com/entrostat/entro-ci/blob/v2.1.1/src/commands/hash/directory.ts)_
+_See code: [src/commands/hash/directory.ts](https://github.com/entrostat/entro-ci/blob/v2.2.0/src/commands/hash/directory.ts)_
 
 ## `entro-ci help [COMMAND]`
 
@@ -145,7 +146,7 @@ ALIASES
   $ entro-ci kdu
 ```
 
-_See code: [src/commands/kube/deployment/update.ts](https://github.com/entrostat/entro-ci/blob/v2.1.1/src/commands/kube/deployment/update.ts)_
+_See code: [src/commands/kube/deployment/update.ts](https://github.com/entrostat/entro-ci/blob/v2.2.0/src/commands/kube/deployment/update.ts)_
 
 ## `entro-ci templates:update`
 
@@ -165,5 +166,32 @@ OPTIONS
                                      version
 ```
 
-_See code: [src/commands/templates/update.ts](https://github.com/entrostat/entro-ci/blob/v2.1.1/src/commands/templates/update.ts)_
+_See code: [src/commands/templates/update.ts](https://github.com/entrostat/entro-ci/blob/v2.2.0/src/commands/templates/update.ts)_
+
+## `entro-ci trigger:post-build`
+
+Trigger a script if the build with a certain image name triggered during this run
+
+```
+USAGE
+  $ entro-ci trigger:post-build
+
+OPTIONS
+  -S, --shell=shell            [default: /bin/bash] The shell that should be used to trigger this script.
+  -a, --all-true               Require all of the image names to have been built to trigger this.
+
+  -i, --image-name=image-name  (required) The image name or image names that should build in order for this to trigger.
+                               By default, the trigger works if any one of these names built.
+
+  -s, --script=script          (required) The path to the script you want to run.
+
+EXAMPLES
+  entro-ci trigger:post-build --script=./scripts/deploy_prod.sh --image-name=myproject/backend
+  entro-ci trigger:post-build --script=./deploy_prod.sh --image-name=myproject/frontend --shell=/bin/zsh
+  entro-ci trigger:post-build --script=./deploy_prod.sh --image-name=myproject/backend-os --image-name=myproject/backend
+  entro-ci trigger:post-build --script=./deploy_prod.sh --image-name=myproject/backend-os --image-name=myproject/backend 
+  --all-true
+```
+
+_See code: [src/commands/trigger/post-build.ts](https://github.com/entrostat/entro-ci/blob/v2.2.0/src/commands/trigger/post-build.ts)_
 <!-- commandsstop -->
