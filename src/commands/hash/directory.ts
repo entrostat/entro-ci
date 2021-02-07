@@ -9,14 +9,13 @@ export default class HashDirectory extends BaseCommand {
     static args = [
         {
             name: 'directory',
+            description: `The directory that we're hashing`,
+            required: true,
         },
     ];
 
     async run() {
         const { args, flags } = this.parse(HashDirectory);
-        if (!args.directory) {
-            this.error(`Please specify the directory path...`);
-        }
         const hash = await hashDirectory(args.directory);
         this.log(hash);
     }
