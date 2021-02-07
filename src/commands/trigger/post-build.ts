@@ -11,6 +11,8 @@ export default class TriggerPostBuild extends BaseCommand {
     static examples = [
         `entro-ci trigger:post-build --script=./scripts/deploy_prod.sh --image-name=myproject/backend`,
         `entro-ci trigger:post-build --script=./deploy_prod.sh --image-name=myproject/frontend --shell=/bin/zsh`,
+        `entro-ci trigger:post-build --script=./deploy_prod.sh --image-name=myproject/backend-os --image-name=myproject/backend`,
+        `entro-ci trigger:post-build --script=./deploy_prod.sh --image-name=myproject/backend-os --image-name=myproject/backend --all-true`,
     ];
 
     static flags = {
