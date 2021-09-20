@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.5.0](https://github.com/entrostat/entro-ci/compare/v2.4.1...v2.5.0) (2021-09-20)
+
+
+### Features
+
+* **build-flags:** Added the docker build flags to entro-ci to allow build args and others ([e33240b](https://github.com/entrostat/entro-ci/commit/e33240bfb0ef48ec13e39bc0168e90028a1b619a))
+
+### [2.4.1](https://github.com/entrostat/entro-ci/compare/v2.4.0...v2.4.1) (2021-09-19)
+
 ## [2.4.0](https://github.com/entrostat/entro-ci/compare/v2.3.1...v2.4.0) (2021-02-07)
 
 

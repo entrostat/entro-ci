@@ -7,6 +7,7 @@ export interface BuildDockerImageParams {
     imageName: string;
     dockerFileName: string;
     dryRun: boolean;
+    dockerBuildFlags: string[];
 }
 
 export async function buildDockerImage({
@@ -14,10 +15,16 @@ export async function buildDockerImage({
     imageName,
     dockerFileName,
     dryRun = false,
+    dockerBuildFlags = [],
 }: BuildDockerImageParams) {
     const localDockerImageName = generateDockerImageName(imageName, 'local-build');
     cli.action.start(`Building local image ${localDockerImageName}`);
-    await executeCommand(`cd ${directory} && docker build . -f ${dockerFileName} -t ${localDockerImageName}`, dryRun);
+    await executeCommand(
+        `cd ${directory} && docker build . -f ${dockerFileName} -t ${localDockerImageName} ${dockerBuildFlags.join(
+            ' ',
+        )}`,
+        dryRun,
+    );
     cli.action.stop();
     return localDockerImageName;
 }

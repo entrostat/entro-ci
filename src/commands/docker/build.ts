@@ -14,6 +14,8 @@ export default class DockerBuild extends BuildImageWorkflowBaseCommand {
         `entro-ci docker:build --directory=./backend --image-name=my-repo/my-image --tag=stable --watch-directory=./backend/src`,
         `entro-ci docker:build --directory=./backend --image-name=my-repo/my-image --tag=stable --watch-directory=./backend/src --watch-directory=./backend/migrations`,
         `entro-ci docker:build --directory=./backend --image-name=my-repo/my-image --tag=stable --watch-directory=./project/shared --watch-directory=./backend`,
+        `entro-ci docker:build --directory=./backend --image-name=my-repo/my-image --tag=stable --watch-directory=./project/shared --watch-directory=./backend --docker-build-flags="--build-arg API_VERSION=v2 --build-arg ENV=prod"`,
+        `entro-ci docker:build --directory=./backend --image-name=my-repo/my-image --tag=stable --watch-directory=./project/shared --watch-directory=./backend --docker-build-flags="--build-arg API_VERSION=v2" --docker-build-flags="--build-arg ENV=prod"`,
     ];
 
     static flags = {
@@ -59,6 +61,13 @@ export default class DockerBuild extends BuildImageWorkflowBaseCommand {
             multiple: true,
             description: `Directories that should be watched to trigger the build. Note, if you set this then it IGNORES the build directory so you'd have to add that here as well.`,
         }),
+        'docker-build-flags': flags.string({
+            char: 'b',
+            required: false,
+            multiple: true,
+            description:
+                'Any additional build flags that you would like to plug directly into the Docker build command',
+        }),
     };
 
     static args = [];
@@ -85,6 +94,7 @@ export default class DockerBuild extends BuildImageWorkflowBaseCommand {
         flags.dockerFileName = flags['docker-file-name'];
         flags.dryRun = flags['dry-run'];
         flags.watchDirectories = flags['watch-directory'];
+        flags.dockerBuildFlags = flags['docker-build-flags'];
         return flags;
     }
 }
