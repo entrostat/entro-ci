@@ -1,4 +1,4 @@
-import { IsArray, IsString } from 'class-validator';
+import { IsArray, IsOptional, IsString } from 'class-validator';
 import { Expose } from 'class-transformer';
 import { AliasKey } from '../shared/transforms/alias-key.transform';
 
@@ -39,4 +39,9 @@ export class DockerBuildFromBuildFlags {
     @IsString()
     @Expose()
     package: string;
+
+    @IsArray()
+    @IsOptional()
+    @AliasKey('docker-build-flags')
+    dockerBuildFlags: string[];
 }

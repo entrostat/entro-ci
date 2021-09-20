@@ -26,6 +26,9 @@ export interface BuildFromHashFlags {
     // The path to the package.json file that has the version of the project
     // that we're building.
     package: string;
+
+    // Any additional build flags required (like arguments)
+    dockerBuildFlags: string[];
 }
 
 export abstract class BuildImageWorkflowBaseCommand extends BaseCommand {
@@ -66,6 +69,7 @@ export abstract class BuildImageWorkflowBaseCommand extends BaseCommand {
             imageName: flags.imageName,
             dryRun: flags.dryRun,
             dockerFileName: flags.dockerFileName,
+            dockerBuildFlags: flags.dockerBuildFlags,
         });
 
         // Push the image to the registry

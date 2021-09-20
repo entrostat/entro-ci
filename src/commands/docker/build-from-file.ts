@@ -10,7 +10,10 @@ export default class DockerBuildFromFile extends BuildImageWorkflowBaseCommand {
     static description =
         'Checks to see if a specific Dockerfile has changed (not the contents of a directory) and builds if this is the case';
 
-    static example = `entro-ci docker:build-from-file --image-name=my-repo/my-image --docker-file-path=./backend/Dockerfile --watch-file=./backend/package.json --watch-file=./backend/manifest.json --tag=stable`;
+    static examples = [
+        `entro-ci docker:build-from-file --image-name=my-repo/my-image --docker-file-path=./backend/Dockerfile --watch-file=./backend/package.json --watch-file=./backend/manifest.json --tag=stable`,
+        `entro-ci docker:build-from-file --image-name=my-repo/my-image --docker-file-path=./backend/Dockerfile --watch-file=./backend/package.json --watch-file=./backend/manifest.json --tag=stable --docker-build-flags="--build-arg API_VERSION=v2"`,
+    ];
 
     static flags = {
         'image-name': flags.string({
@@ -51,6 +54,13 @@ export default class DockerBuildFromFile extends BuildImageWorkflowBaseCommand {
             default: false,
             description: 'Whether to run this live or do a dry run',
         }),
+        'docker-build-flags': flags.string({
+            char: 'b',
+            required: false,
+            multiple: true,
+            description:
+                'Any additional build flags that you would like to plug directly into the Docker build command',
+        }),
     };
 
     static args = [];
@@ -80,6 +90,7 @@ export default class DockerBuildFromFile extends BuildImageWorkflowBaseCommand {
         dockerBuildFromFileFlags.dockerFilePath = flags['docker-file-path'];
         dockerBuildFromFileFlags.dryRun = flags['dry-run'];
         dockerBuildFromFileFlags.watchFile = flags['watch-file'];
+        dockerBuildFromFileFlags.dockerBuildFlags = flags['docker-build-flags'];
         return dockerBuildFromFileFlags;
     }
 }
