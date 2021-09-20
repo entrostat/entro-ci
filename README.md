@@ -19,7 +19,7 @@ $ npm install -g entro-ci
 $ entro-ci COMMAND
 running command...
 $ entro-ci (-v|--version|version)
-entro-ci/2.4.0 linux-x64 node-v14.15.0
+entro-ci/2.5.0 linux-x64 node-v14.17.3
 $ entro-ci --help [COMMAND]
 USAGE
   $ entro-ci COMMAND
@@ -45,24 +45,30 @@ USAGE
   $ entro-ci docker:build
 
 OPTIONS
-  -R, --dry-run                            Whether to run this live or do a dry run
-  -d, --directory=directory                (required) The path to the directory that you want to build
-  -f, --docker-file-name=docker-file-name  [default: Dockerfile] The name of the Docker file in the directory
+  -R, --dry-run                                Whether to run this live or do a dry run
 
-  -i, --image-name=image-name              (required) The name of the Docker image name without the version on it, eg:
-                                           entrostat/entro-ci is correct and entrostat/entro-ci:latest is not valid
+  -b, --docker-build-flags=docker-build-flags  Any additional build flags that you would like to plug directly into the
+                                               Docker build command
 
-  -p, --package=package                    [default: ./package.json] The path to the package.json that holds the version
-                                           of the build
+  -d, --directory=directory                    (required) The path to the directory that you want to build
 
-  -r, --registry=registry                  The registry that should be used (by default Docker Hub is used)
+  -f, --docker-file-name=docker-file-name      [default: Dockerfile] The name of the Docker file in the directory
 
-  -t, --tag=tag                            The tag version that should be pushed to the registry so that it can be used
-                                           in automated deployments
+  -i, --image-name=image-name                  (required) The name of the Docker image name without the version on it,
+                                               eg: entrostat/entro-ci is correct and entrostat/entro-ci:latest is not
+                                               valid
 
-  -w, --watch-directory=watch-directory    Directories that should be watched to trigger the build. Note, if you set
-                                           this then it IGNORES the build directory so you'd have to add that here as
-                                           well.
+  -p, --package=package                        [default: ./package.json] The path to the package.json that holds the
+                                               version of the build
+
+  -r, --registry=registry                      The registry that should be used (by default Docker Hub is used)
+
+  -t, --tag=tag                                The tag version that should be pushed to the registry so that it can be
+                                               used in automated deployments
+
+  -w, --watch-directory=watch-directory        Directories that should be watched to trigger the build. Note, if you set
+                                               this then it IGNORES the build directory so you'd have to add that here
+                                               as well.
 
 EXAMPLES
   entro-ci docker:build --directory=./backend --image-name=my-repo/my-image --tag=stable
@@ -71,9 +77,15 @@ EXAMPLES
   --watch-directory=./backend/migrations
   entro-ci docker:build --directory=./backend --image-name=my-repo/my-image --tag=stable 
   --watch-directory=./project/shared --watch-directory=./backend
+  entro-ci docker:build --directory=./backend --image-name=my-repo/my-image --tag=stable 
+  --watch-directory=./project/shared --watch-directory=./backend --docker-build-flags="--build-arg API_VERSION=v2 
+  --build-arg ENV=prod"
+  entro-ci docker:build --directory=./backend --image-name=my-repo/my-image --tag=stable 
+  --watch-directory=./project/shared --watch-directory=./backend --docker-build-flags="--build-arg API_VERSION=v2" 
+  --docker-build-flags="--build-arg ENV=prod"
 ```
 
-_See code: [src/commands/docker/build.ts](https://github.com/entrostat/entro-ci/blob/v2.4.0/src/commands/docker/build.ts)_
+_See code: [src/commands/docker/build.ts](https://github.com/entrostat/entro-ci/blob/v2.5.0/src/commands/docker/build.ts)_
 
 ## `entro-ci docker:build-from-file`
 
@@ -84,29 +96,37 @@ USAGE
   $ entro-ci docker:build-from-file
 
 OPTIONS
-  -R, --dry-run                            Whether to run this live or do a dry run
-  -f, --docker-file-path=docker-file-path  (required) The path to the Docker file
+  -R, --dry-run                                Whether to run this live or do a dry run
 
-  -i, --image-name=image-name              (required) The name of the Docker image name without the version on it, eg:
-                                           entrostat/entro-ci is correct and entrostat/entro-ci:latest is not valid
+  -b, --docker-build-flags=docker-build-flags  Any additional build flags that you would like to plug directly into the
+                                               Docker build command
 
-  -p, --package=package                    [default: ./package.json] The path to the package.json that holds the version
-                                           of the build
+  -f, --docker-file-path=docker-file-path      (required) The path to the Docker file
 
-  -r, --registry=registry                  The registry that should be used (by default Docker Hub is used)
+  -i, --image-name=image-name                  (required) The name of the Docker image name without the version on it,
+                                               eg: entrostat/entro-ci is correct and entrostat/entro-ci:latest is not
+                                               valid
 
-  -t, --tag=tag                            The tag version that should be pushed to the registry so that it can be used
-                                           in automated deployments
+  -p, --package=package                        [default: ./package.json] The path to the package.json that holds the
+                                               version of the build
 
-  -w, --watch-file=watch-file              One or more files that should be "watched" for change that fall into this
-                                           Dockerfile. So it is not a whole folder but a file or two.
+  -r, --registry=registry                      The registry that should be used (by default Docker Hub is used)
+
+  -t, --tag=tag                                The tag version that should be pushed to the registry so that it can be
+                                               used in automated deployments
+
+  -w, --watch-file=watch-file                  One or more files that should be "watched" for change that fall into this
+                                               Dockerfile. So it is not a whole folder but a file or two.
 
 EXAMPLES
   entro-ci docker:build-from-file --image-name=my-repo/my-image --docker-file-path=./backend/Dockerfile 
   --watch-file=./backend/package.json --watch-file=./backend/manifest.json --tag=stable
+  entro-ci docker:build-from-file --image-name=my-repo/my-image --docker-file-path=./backend/Dockerfile 
+  --watch-file=./backend/package.json --watch-file=./backend/manifest.json --tag=stable 
+  --docker-build-flags="--build-arg API_VERSION=v2"
 ```
 
-_See code: [src/commands/docker/build-from-file.ts](https://github.com/entrostat/entro-ci/blob/v2.4.0/src/commands/docker/build-from-file.ts)_
+_See code: [src/commands/docker/build-from-file.ts](https://github.com/entrostat/entro-ci/blob/v2.5.0/src/commands/docker/build-from-file.ts)_
 
 ## `entro-ci hash:directory DIRECTORY`
 
@@ -120,7 +140,7 @@ ARGUMENTS
   DIRECTORY  The directory that we're hashing
 ```
 
-_See code: [src/commands/hash/directory.ts](https://github.com/entrostat/entro-ci/blob/v2.4.0/src/commands/hash/directory.ts)_
+_See code: [src/commands/hash/directory.ts](https://github.com/entrostat/entro-ci/blob/v2.5.0/src/commands/hash/directory.ts)_
 
 ## `entro-ci help [COMMAND]`
 
@@ -137,7 +157,7 @@ OPTIONS
   --all  see all commands in CLI
 ```
 
-_See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.2.0/src/commands/help.ts)_
+_See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.2.3/src/commands/help.ts)_
 
 ## `entro-ci kube:deployment:update DEPLOYMENT [NAMESPACE]`
 
@@ -158,7 +178,7 @@ ALIASES
   $ entro-ci kdu
 ```
 
-_See code: [src/commands/kube/deployment/update.ts](https://github.com/entrostat/entro-ci/blob/v2.4.0/src/commands/kube/deployment/update.ts)_
+_See code: [src/commands/kube/deployment/update.ts](https://github.com/entrostat/entro-ci/blob/v2.5.0/src/commands/kube/deployment/update.ts)_
 
 ## `entro-ci templates:update`
 
@@ -182,7 +202,7 @@ EXAMPLES
   entro-ci templates:update -f .templates.yaml
 ```
 
-_See code: [src/commands/templates/update.ts](https://github.com/entrostat/entro-ci/blob/v2.4.0/src/commands/templates/update.ts)_
+_See code: [src/commands/templates/update.ts](https://github.com/entrostat/entro-ci/blob/v2.5.0/src/commands/templates/update.ts)_
 
 ## `entro-ci trigger:post-build`
 
@@ -209,5 +229,5 @@ EXAMPLES
   --all-true
 ```
 
-_See code: [src/commands/trigger/post-build.ts](https://github.com/entrostat/entro-ci/blob/v2.4.0/src/commands/trigger/post-build.ts)_
+_See code: [src/commands/trigger/post-build.ts](https://github.com/entrostat/entro-ci/blob/v2.5.0/src/commands/trigger/post-build.ts)_
 <!-- commandsstop -->
