@@ -19,7 +19,7 @@ $ npm install -g entro-ci
 $ entro-ci COMMAND
 running command...
 $ entro-ci (-v|--version|version)
-entro-ci/2.6.0 linux-x64 node-v14.17.3
+entro-ci/3.0.0 linux-x64 node-v14.17.3
 $ entro-ci --help [COMMAND]
 USAGE
   $ entro-ci COMMAND
