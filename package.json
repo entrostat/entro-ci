@@ -1,7 +1,7 @@
 {
     "name": "entro-ci",
     "description": "An automated CI tool to help with building packages and ignoring them when there wasn't a change.",
-    "version": "3.0.1",
+    "version": "3.0.2",
     "author": "Kerren @Kerren-Entrostat",
     "bin": {
         "entro-ci": "./bin/run"
@@ -55,7 +55,23 @@
     ],
     "homepage": "https://github.com/entrostat/entro-ci",
     "keywords": [
-        "oclif"
+        "oclif",
+        "templates",
+        "templating",
+        "ci",
+        "cd",
+        "automation",
+        "versioning",
+        "version",
+        "kubernetes",
+        "orchestration",
+        "docker",
+        "trigger",
+        "hash",
+        "directory",
+        "build",
+        "actions",
+        "github"
     ],
     "license": "MIT",
     "main": "lib/index.js",
