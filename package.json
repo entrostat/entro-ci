@@ -1,7 +1,7 @@
 {
     "name": "entro-ci",
     "description": "An automated CI tool to help with building packages and ignoring them when there wasn't a change.",
-    "version": "2.5.0",
+    "version": "2.6.0",
     "author": "Kerren @Kerren-Entrostat",
     "bin": {
         "entro-ci": "./bin/run"
@@ -32,6 +32,7 @@
         "@types/mocha": "^5.2.7",
         "@types/node": "^10.17.50",
         "chai": "^4.2.0",
+        "entro-version": "^1.5.0",
         "eslint": "^5.16.0",
         "eslint-config-oclif": "^3.1.0",
         "eslint-config-oclif-typescript": "^0.1.0",
@@ -72,8 +73,7 @@
         "prepack": "rm -rf lib && tsc -b && oclif-dev manifest && oclif-dev readme",
         "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
         "version": "oclif-dev readme && git add README.md",
-        "release": "standard-version",
-        "release:dry-run": "standard-version --dry-run"
+        "release": "entro-version --during-release-post-hook=\"npm run version && npm publish && git commit -am 'Updated the readme'\""
     },
     "types": "lib/index.d.ts"
 }
