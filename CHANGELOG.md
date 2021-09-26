@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.0.1](https://github.com/entrostat/entro-ci/compare/v3.0.0...v3.0.1) (2021-09-26)
+
+
+### Bug Fixes
+
+* **build:** The build was failing with the latest version of globby ([55bbe41](https://github.com/entrostat/entro-ci/commit/55bbe41b2d6325713a5d9b915593c2a3bbe2dc9b))
+
 ## [3.0.0](https://github.com/entrostat/entro-ci/compare/v2.6.0...v3.0.0) (2021-09-26)
 
 

@@ -1,7 +1,7 @@
 {
     "name": "entro-ci",
     "description": "An automated CI tool to help with building packages and ignoring them when there wasn't a change.",
-    "version": "3.0.0",
+    "version": "3.0.1",
     "author": "Kerren @Kerren-Entrostat",
     "bin": {
         "entro-ci": "./bin/run"
@@ -36,7 +36,7 @@
         "eslint": "^7.32.0",
         "eslint-config-oclif": "^4.0.0",
         "eslint-config-oclif-typescript": "^1.0.2",
-        "globby": "^12.0.2",
+        "globby": "^10.0.2",
         "mocha": "^9.1.2",
         "nyc": "^15.1.0",
         "prettier": "^2.4.1",
