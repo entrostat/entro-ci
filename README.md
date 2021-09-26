@@ -3,10 +3,10 @@ entro-ci
 
 An automated CI tool to help with building packages and ignoring them when there wasn&#39;t a change.
 
-[![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
-[![Version](https://img.shields.io/npm/v/entro-ci.svg)](https://npmjs.org/package/entro-ci)
-[![Downloads/week](https://img.shields.io/npm/dw/entro-ci.svg)](https://npmjs.org/package/entro-ci)
-[![License](https://img.shields.io/npm/l/entro-ci.svg)](https://github.com/entrostat/entro-ci/blob/master/package.json)
+[![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg?style=for-the-badge)](https://oclif.io)
+[![Version](https://img.shields.io/npm/v/entro-ci.svg?style=for-the-badge)](https://npmjs.org/package/entro-ci)
+[![Downloads/week](https://img.shields.io/npm/dw/entro-ci.svg?style=for-the-badge)](https://npmjs.org/package/entro-ci)
+[![License](https://img.shields.io/npm/l/entro-ci.svg?style=for-the-badge)](https://github.com/entrostat/entro-ci/blob/master/package.json)
 
 <!-- toc -->
 * [Usage](#usage)
