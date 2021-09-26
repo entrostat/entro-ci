@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.0](https://github.com/entrostat/entro-ci/compare/v2.6.0...v3.0.0) (2021-09-26)
+
+
+### Features
+
+* **version:** Added the ability to pack and update the readme during the versioning ([a55a094](https://github.com/entrostat/entro-ci/commit/a55a094eafb9b25999ab3f8dbc92699627628ff7))
+
+
+### Bug Fixes
+
+* **docs:** Updated the badge styles in the readme ([2a70076](https://github.com/entrostat/entro-ci/commit/2a70076fb017d1dabafb76ed9f916836e193fc9b))
+
 ## [2.6.0](https://github.com/entrostat/entro-ci/compare/v2.5.0...v2.6.0) (2021-09-26)
 
 
