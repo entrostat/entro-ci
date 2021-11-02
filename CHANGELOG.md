@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.0.3](https://github.com/entrostat/entro-ci/compare/v3.0.2...v3.0.3) (2021-11-02)
+
+
+### Bug Fixes
+
+* **docker-builder:** Allow for the tag to be undefined and if it is then don't tag the image ([2680332](https://github.com/entrostat/entro-ci/commit/26803321844edaf4cde36e3628c7f988036e2cfa))
+
 ### [3.0.2](https://github.com/entrostat/entro-ci/compare/v3.0.1...v3.0.2) (2021-09-26)
 
 
