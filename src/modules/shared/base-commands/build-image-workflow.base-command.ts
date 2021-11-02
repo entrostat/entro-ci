@@ -43,7 +43,9 @@ export abstract class BuildImageWorkflowBaseCommand extends BaseCommand {
     async buildFromHash(hash: string, directory: string, flags: BuildFromHashFlags) {
         const buildArtifactService = container.resolve(BuildArtefactService);
         const exists = await this.dockerImageExists(hash, flags);
-        const projectVersion = `${flags.tag}-${await packageJsonVersion(flags.package)}`;
+        const projectVersion = flags.tag
+            ? `${flags.tag}-${await packageJsonVersion(flags.package)}`
+            : await packageJsonVersion(flags.package);
         if (exists) {
             const versionExists = await this.dockerImageExists(flags.tag, flags);
             if (versionExists) {
@@ -57,7 +59,7 @@ export abstract class BuildImageWorkflowBaseCommand extends BaseCommand {
             await pushDockerImage({
                 localImageName: existingImageName,
                 imageName: flags.imageName,
-                tags: [flags.tag, projectVersion, `${flags.tag}-latest`],
+                tags: flags.tag ? [flags.tag, projectVersion, `${flags.tag}-latest`] : [projectVersion],
                 registry: flags.registry,
                 dryRun: flags.dryRun,
             });
