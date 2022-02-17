@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.1.1](https://github.com/entrostat/entro-ci/compare/v3.1.0...v3.1.1) (2022-02-17)
+
+
+### Bug Fixes
+
+* **docker-login:** Added the registry to the login command ([9893dd8](https://github.com/entrostat/entro-ci/commit/9893dd812def61af537888510746bdf4cf5a03a3))
+
 ## [3.1.0](https://github.com/entrostat/entro-ci/compare/v3.0.3...v3.1.0) (2022-02-17)
 
 
