@@ -136,7 +136,7 @@ export abstract class BuildImageWorkflowBaseCommand extends BaseCommand {
     private async dockerLogin(flags: BuildFromHashFlags) {
         if (flags.dockerUsername && flags.dockerPassword) {
             console.log('The docker username and password have been specified, logging in now!');
-            await dockerLogin(flags.dockerUsername, flags.dockerPassword);
+            await dockerLogin(flags.dockerUsername, flags.dockerPassword, flags.registry);
         }
     }
 }
