@@ -6,6 +6,7 @@ import { pullDockerImage } from '../helpers/docker/pull-docker-image';
 import { container } from 'tsyringe';
 import { BuildArtefactService, BuildTrigger } from '../services/build-artefact.service';
 import { packageJsonVersion } from '../helpers/package-json-version';
+import { dockerLogin } from '../helpers/docker/docker-login';
 
 export interface BuildFromHashFlags {
     // The name of the image that is pushed to the registry
@@ -29,6 +30,12 @@ export interface BuildFromHashFlags {
 
     // Any additional build flags required (like arguments)
     dockerBuildFlags: string[];
+
+    // Username for logging into a private repository
+    dockerUsername: string;
+
+    // Password for logging into a private repository
+    dockerPassword: string;
 }
 
 export abstract class BuildImageWorkflowBaseCommand extends BaseCommand {
@@ -42,6 +49,7 @@ export abstract class BuildImageWorkflowBaseCommand extends BaseCommand {
      */
     async buildFromHash(hash: string, directory: string, flags: BuildFromHashFlags) {
         const buildArtifactService = container.resolve(BuildArtefactService);
+        await this.dockerLogin(flags);
         const exists = await this.dockerImageExists(hash, flags);
         const projectVersion = flags.tag
             ? `${flags.tag}-${await packageJsonVersion(flags.package)}`
@@ -116,6 +124,19 @@ export abstract class BuildImageWorkflowBaseCommand extends BaseCommand {
         } catch (e) {
             this.log(`The docker image ${dockerImageName} has NOT been built before!`);
             return false;
+        }
+    }
+
+    /**
+     * Checks if there is a username and password specified and if there is then
+     * it will login with those credentials
+     * @param flags The build flags
+     * @private
+     */
+    private async dockerLogin(flags: BuildFromHashFlags) {
+        if (flags.dockerUsername && flags.dockerPassword) {
+            console.log('The docker username and password have been specified, logging in now!');
+            await dockerLogin(flags.dockerUsername, flags.dockerPassword);
         }
     }
 }
