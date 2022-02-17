@@ -44,4 +44,12 @@ export class DockerBuildFromBuildFlags {
     @IsOptional()
     @AliasKey('docker-build-flags')
     dockerBuildFlags: string[];
+
+    @IsString()
+    @Expose()
+    dockerUsername: string;
+
+    @IsString()
+    @Expose()
+    dockerPassword: string;
 }
