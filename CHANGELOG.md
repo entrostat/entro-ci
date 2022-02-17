@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.1.0](https://github.com/entrostat/entro-ci/compare/v3.0.3...v3.1.0) (2022-02-17)
+
+
+### Features
+
+* **docker-login:** Added the ability to login with docker credentials before building [#5](https://github.com/entrostat/entro-ci/issues/5) ([a8df06f](https://github.com/entrostat/entro-ci/commit/a8df06f5e483036a564dee0d37b2aad66dbd0a40))
+
 ### [3.0.3](https://github.com/entrostat/entro-ci/compare/v3.0.2...v3.0.3) (2021-11-02)
 
 

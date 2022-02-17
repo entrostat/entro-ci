@@ -19,7 +19,7 @@ $ npm install -g entro-ci
 $ entro-ci COMMAND
 running command...
 $ entro-ci (-v|--version|version)
-entro-ci/3.0.3 linux-x64 node-v14.17.3
+entro-ci/3.1.0 linux-x64 node-v14.17.3
 $ entro-ci --help [COMMAND]
 USAGE
   $ entro-ci COMMAND
@@ -45,6 +45,9 @@ USAGE
   $ entro-ci docker:build
 
 OPTIONS
+  -P, --docker-password=docker-password        The password for logging into the docker repository (mainly for if you
+                                               are running this build process inside a container)
+
   -R, --dry-run                                Whether to run this live or do a dry run
 
   -b, --docker-build-flags=docker-build-flags  Any additional build flags that you would like to plug directly into the
@@ -66,6 +69,9 @@ OPTIONS
   -t, --tag=tag                                The tag version that should be pushed to the registry so that it can be
                                                used in automated deployments
 
+  -u, --docker-username=docker-username        The username for logging into the docker repository (mainly for if you
+                                               are running this build process inside a container)
+
   -w, --watch-directory=watch-directory        Directories that should be watched to trigger the build. Note, if you set
                                                this then it IGNORES the build directory so you'd have to add that here
                                                as well.
@@ -85,7 +91,7 @@ EXAMPLES
   --docker-build-flags="--build-arg ENV=prod"
 ```
 
-_See code: [src/commands/docker/build.ts](https://github.com/entrostat/entro-ci/blob/v3.0.3/src/commands/docker/build.ts)_
+_See code: [src/commands/docker/build.ts](https://github.com/entrostat/entro-ci/blob/v3.1.0/src/commands/docker/build.ts)_
 
 ## `entro-ci docker:build-from-file`
 
@@ -96,6 +102,9 @@ USAGE
   $ entro-ci docker:build-from-file
 
 OPTIONS
+  -P, --docker-password=docker-password        The password for logging into the docker repository (mainly for if you
+                                               are running this build process inside a container)
+
   -R, --dry-run                                Whether to run this live or do a dry run
 
   -b, --docker-build-flags=docker-build-flags  Any additional build flags that you would like to plug directly into the
@@ -115,6 +124,9 @@ OPTIONS
   -t, --tag=tag                                The tag version that should be pushed to the registry so that it can be
                                                used in automated deployments
 
+  -u, --docker-username=docker-username        The username for logging into the docker repository (mainly for if you
+                                               are running this build process inside a container)
+
   -w, --watch-file=watch-file                  One or more files that should be "watched" for change that fall into this
                                                Dockerfile. So it is not a whole folder but a file or two.
 
@@ -126,7 +138,7 @@ EXAMPLES
   --docker-build-flags="--build-arg API_VERSION=v2"
 ```
 
-_See code: [src/commands/docker/build-from-file.ts](https://github.com/entrostat/entro-ci/blob/v3.0.3/src/commands/docker/build-from-file.ts)_
+_See code: [src/commands/docker/build-from-file.ts](https://github.com/entrostat/entro-ci/blob/v3.1.0/src/commands/docker/build-from-file.ts)_
 
 ## `entro-ci hash:directory DIRECTORY`
 
@@ -140,7 +152,7 @@ ARGUMENTS
   DIRECTORY  The directory that we're hashing
 ```
 
-_See code: [src/commands/hash/directory.ts](https://github.com/entrostat/entro-ci/blob/v3.0.3/src/commands/hash/directory.ts)_
+_See code: [src/commands/hash/directory.ts](https://github.com/entrostat/entro-ci/blob/v3.1.0/src/commands/hash/directory.ts)_
 
 ## `entro-ci help [COMMAND]`
 
@@ -178,7 +190,7 @@ ALIASES
   $ entro-ci kdu
 ```
 
-_See code: [src/commands/kube/deployment/update.ts](https://github.com/entrostat/entro-ci/blob/v3.0.3/src/commands/kube/deployment/update.ts)_
+_See code: [src/commands/kube/deployment/update.ts](https://github.com/entrostat/entro-ci/blob/v3.1.0/src/commands/kube/deployment/update.ts)_
 
 ## `entro-ci templates:update`
 
@@ -202,7 +214,7 @@ EXAMPLES
   entro-ci templates:update -f .templates.yaml
 ```
 
-_See code: [src/commands/templates/update.ts](https://github.com/entrostat/entro-ci/blob/v3.0.3/src/commands/templates/update.ts)_
+_See code: [src/commands/templates/update.ts](https://github.com/entrostat/entro-ci/blob/v3.1.0/src/commands/templates/update.ts)_
 
 ## `entro-ci trigger:post-build`
 
@@ -229,5 +241,5 @@ EXAMPLES
   --all-true
 ```
 
-_See code: [src/commands/trigger/post-build.ts](https://github.com/entrostat/entro-ci/blob/v3.0.3/src/commands/trigger/post-build.ts)_
+_See code: [src/commands/trigger/post-build.ts](https://github.com/entrostat/entro-ci/blob/v3.1.0/src/commands/trigger/post-build.ts)_
 <!-- commandsstop -->

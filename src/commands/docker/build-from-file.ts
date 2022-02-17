@@ -61,6 +61,20 @@ export default class DockerBuildFromFile extends BuildImageWorkflowBaseCommand {
             description:
                 'Any additional build flags that you would like to plug directly into the Docker build command',
         }),
+        'docker-username': flags.string({
+            char: 'u',
+            required: false,
+            multiple: false,
+            description:
+                'The username for logging into the docker repository (mainly for if you are running this build process inside a container)',
+        }),
+        'docker-password': flags.string({
+            char: 'P',
+            required: false,
+            multiple: false,
+            description:
+                'The password for logging into the docker repository (mainly for if you are running this build process inside a container)',
+        }),
     };
 
     static args = [];
@@ -91,6 +105,8 @@ export default class DockerBuildFromFile extends BuildImageWorkflowBaseCommand {
         dockerBuildFromFileFlags.dryRun = flags['dry-run'];
         dockerBuildFromFileFlags.watchFile = flags['watch-file'];
         dockerBuildFromFileFlags.dockerBuildFlags = flags['docker-build-flags'];
+        dockerBuildFromFileFlags.dockerUsername = flags['docker-username'];
+        dockerBuildFromFileFlags.dockerPassword = flags['docker-password'];
         return dockerBuildFromFileFlags;
     }
 }
