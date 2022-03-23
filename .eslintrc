@@ -1,6 +1,9 @@
 {
-  "extends": [
-    "oclif",
-    "oclif-typescript"
-  ]
+    "extends": ["oclif", "oclif-typescript"],
+    "rules": {
+        "semi": [2, "always"],
+        "quotes": [1, "single"],
+        "indent": [1, 4],
+        "object-curly-spacing": [1, "always"]
+    }
 }

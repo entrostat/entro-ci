@@ -82,10 +82,11 @@ export abstract class BuildImageWorkflowBaseCommand extends BaseCommand {
             dockerBuildFlags: flags.dockerBuildFlags,
         });
 
+        const additionalTags = flags.tag ? [projectVersion, `${flags.tag}-latest`] : [projectVersion];
         // Push the image to the registry
         await pushDockerImage({
             localImageName,
-            tags: this.getTags(hash, flags).concat([projectVersion, `${flags.tag}-latest`]),
+            tags: [...this.getTags(hash, flags), ...additionalTags],
             imageName: flags.imageName,
             registry: flags.registry,
             dryRun: flags.dryRun,
