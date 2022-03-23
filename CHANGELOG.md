@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.1.2](https://github.com/entrostat/entro-ci/compare/v3.1.1...v3.1.2) (2022-03-23)
+
+
+### Bug Fixes
+
+* **docker-build:** Prevent undefined-latest tag when bulding a non-existent image [#6](https://github.com/entrostat/entro-ci/issues/6) ([4c08c98](https://github.com/entrostat/entro-ci/commit/4c08c986183287df0923503a2abfe019e8cb5a4a))
+
 ### [3.1.1](https://github.com/entrostat/entro-ci/compare/v3.1.0...v3.1.1) (2022-02-17)
 
 
