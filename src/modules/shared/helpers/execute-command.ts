@@ -10,15 +10,13 @@ export async function executeCommand(command: string, dryRun = false): Promise<s
     }
     return new Promise((resolve, reject) => {
         logger.log(`${command}`);
-        exec(command, (err, stdout, stderr) => {
+        const myCommand = exec(command, (err, stdout, stderr) => {
             if (err) {
-                logger.warn(`An ERROR has occurred:\n${stderr}`);
                 return reject(stderr);
-            }
-            if (stdout) {
-                logger.log(stdout);
             }
             return resolve(stdout);
         });
+        myCommand?.stdout?.on('data', data => logger.log(data));
+        myCommand?.stderr?.on('data', data => logger.error(data));
     });
 }

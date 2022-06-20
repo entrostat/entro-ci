@@ -1,7 +1,7 @@
 import { singleton } from 'tsyringe';
 import * as fs from 'fs-extra';
 import * as path from 'path';
-import { Expose, plainToClass, Type } from 'class-transformer';
+import { Expose, plainToInstance, Type } from 'class-transformer';
 
 export enum BuildTrigger {
     exists = 'exists',
@@ -48,7 +48,7 @@ export class BuildArtefactService {
     }
 
     async getCurrentArtefacts() {
-        return plainToClass(BuildArtefactState, await this.readCurrentArtefactsFromFs());
+        return plainToInstance(BuildArtefactState, await this.readCurrentArtefactsFromFs());
     }
 
     private async readCurrentArtefactsFromFs(): Promise<object> {
