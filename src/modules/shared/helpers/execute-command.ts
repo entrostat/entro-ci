@@ -17,6 +17,6 @@ export async function executeCommand(command: string, dryRun = false): Promise<s
             return resolve(stdout);
         });
         myCommand?.stdout?.on('data', data => logger.log(data));
-        myCommand?.stderr?.on('data', data => logger.error(data));
+        myCommand?.stderr?.on('data', data => logger.warn(data));
     });
 }
