@@ -3,7 +3,7 @@ import { BuildImageWorkflowBaseCommand } from '../../modules/shared/base-command
 import * as path from 'path';
 import { hashFile } from '../../modules/shared/helpers/hash-file';
 import { hashFiles } from '../../modules/shared/helpers/hash-files';
-import { plainToClass } from 'class-transformer';
+import { plainToInstance } from 'class-transformer';
 import { DockerBuildFromBuildFlags } from '../../modules/models/docker-build-from.build-flags';
 
 export default class DockerBuildFromFile extends BuildImageWorkflowBaseCommand {
@@ -98,7 +98,7 @@ export default class DockerBuildFromFile extends BuildImageWorkflowBaseCommand {
 
     private createBuildFlags(flags: any) {
         flags['docker-file-name'] = path.basename(flags['docker-file-path']);
-        const dockerBuildFromFileFlags = plainToClass(DockerBuildFromBuildFlags, flags as object);
+        const dockerBuildFromFileFlags = plainToInstance(DockerBuildFromBuildFlags, flags as object);
         dockerBuildFromFileFlags.imageName = flags['image-name'];
         dockerBuildFromFileFlags.dockerFileName = flags['docker-file-name'];
         dockerBuildFromFileFlags.dockerFilePath = flags['docker-file-path'];
