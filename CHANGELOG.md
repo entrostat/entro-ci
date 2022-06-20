@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.0.1](https://github.com/entrostat/entro-ci/compare/v4.0.0...v4.0.1) (2022-06-20)
+
+
+### Bug Fixes
+
+* **deps:** Updated the version of class-transformer ([9281a66](https://github.com/entrostat/entro-ci/commit/9281a667ff90873e226b868380195977ae2cff7a))
+
 ## [4.0.0](https://github.com/entrostat/entro-ci/compare/v3.1.2...v4.0.0) (2022-06-20)
 
 
