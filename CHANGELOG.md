@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.0.0](https://github.com/entrostat/entro-ci/compare/v3.1.2...v4.0.0) (2022-06-20)
+
+
+### Features
+
+* **logging:** Log the output from a command in realtime, don't log it out at the end of an exec call ([85063cf](https://github.com/entrostat/entro-ci/commit/85063cfaffc15a4199cb38991a924edeb93f4783))
+
+
+### Bug Fixes
+
+* **deps:** Installed the new version of class-transformer and changed plainToClass to plainToInstance ([45445bd](https://github.com/entrostat/entro-ci/commit/45445bd447923f74b8837597b6e72366e9e6220f))
+* **devops:** Added the major release command ([512e057](https://github.com/entrostat/entro-ci/commit/512e0573454fd7ba04c0f7609b5e6dc589a278c7))
+
 ### [3.1.2](https://github.com/entrostat/entro-ci/compare/v3.1.1...v3.1.2) (2022-03-23)
 
 
