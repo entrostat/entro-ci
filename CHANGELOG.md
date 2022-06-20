@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.0.2](https://github.com/entrostat/entro-ci/compare/v4.0.1...v4.0.2) (2022-06-20)
+
+
+### Bug Fixes
+
+* **logger:** Warn when there is an error using the logger because errors exit the CLI ([bb60c1f](https://github.com/entrostat/entro-ci/commit/bb60c1fb174fd92bf2296744a6c7868c520e718a))
+
 ### [4.0.1](https://github.com/entrostat/entro-ci/compare/v4.0.0...v4.0.1) (2022-06-20)
 
 
