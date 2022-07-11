@@ -1,9 +1,5 @@
 import { Command, flags } from '@oclif/command';
 import * as path from 'path';
-import * as yaml from 'js-yaml';
-import * as fs from 'fs-extra';
-import { EntroCiYaml } from '../../modules/shared/interfaces/entro-ci-yaml';
-import * as handlebars from 'handlebars';
 import { packageJsonVersion } from '../../modules/shared/helpers/package-json-version';
 
 export default class ProjectVersion extends Command {

@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.1.1](https://github.com/entrostat/entro-ci/compare/v4.1.0...v4.1.1) (2022-07-11)
+
+
+### Bug Fixes
+
+* **formatting:** Removed unneeded imports ([e35de61](https://github.com/entrostat/entro-ci/commit/e35de6197d6eeb559ea4734b5581630025d86f93))
+
 ## [4.1.0](https://github.com/entrostat/entro-ci/compare/v4.0.2...v4.1.0) (2022-07-11)
 
 
