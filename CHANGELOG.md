@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.1.0](https://github.com/entrostat/entro-ci/compare/v4.0.2...v4.1.0) (2022-07-11)
+
+
+### Features
+
+* **project-version:** Added a command to tell you the project version ([d0808bc](https://github.com/entrostat/entro-ci/commit/d0808bce90ab5080daf39ec3395415a8ad68387e))
+
 ### [4.0.2](https://github.com/entrostat/entro-ci/compare/v4.0.1...v4.0.2) (2022-06-20)
 
 
