@@ -2,7 +2,7 @@ import { BaseCommand } from './base-command';
 import { buildDockerImage } from '../helpers/docker/build-docker-image';
 import { pushDockerImage } from '../helpers/docker/push-docker-image';
 import { generateDockerImageName } from '../helpers/docker/docker-image-name-builder';
-import { pullDockerImage } from '../helpers/docker/pull-docker-image';
+import { checkIfDockerImageExists } from '../helpers/docker/check-if-docker-image-exists';
 import { container } from 'tsyringe';
 import { BuildArtefactService, BuildTrigger } from '../services/build-artefact.service';
 import { packageJsonVersion } from '../helpers/package-json-version';
@@ -119,7 +119,7 @@ export abstract class BuildImageWorkflowBaseCommand extends BaseCommand {
         const dockerImageName = generateDockerImageName(flags.imageName, hash, flags.registry);
         this.log(`Checking for ${dockerImageName}`);
         try {
-            await pullDockerImage(hash, flags.imageName, flags.registry, flags.dryRun);
+            await checkIfDockerImageExists(hash, flags.imageName, flags.registry, flags.dryRun);
             this.log(`The docker image ${dockerImageName} has already been built before!`);
             return true;
         } catch (e) {
