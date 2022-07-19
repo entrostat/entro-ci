@@ -7,6 +7,7 @@ import { container } from 'tsyringe';
 import { BuildArtefactService, BuildTrigger } from '../services/build-artefact.service';
 import { packageJsonVersion } from '../helpers/package-json-version';
 import { dockerLogin } from '../helpers/docker/docker-login';
+import { pullDockerImage } from '../helpers/docker/pull-docker-image';
 
 export interface BuildFromHashFlags {
     // The name of the image that is pushed to the registry
@@ -64,6 +65,7 @@ export abstract class BuildImageWorkflowBaseCommand extends BaseCommand {
             // If it exists, we don't need to build it again but we should push
             //  it to its new tag.
             const existingImageName = generateDockerImageName(flags.imageName, hash, flags.registry);
+            await pullDockerImage(hash, flags.imageName, flags.registry, flags.dryRun);
             await pushDockerImage({
                 localImageName: existingImageName,
                 imageName: flags.imageName,
