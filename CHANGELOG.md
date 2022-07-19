@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.2.1](https://github.com/entrostat/entro-ci/compare/v4.2.0...v4.2.1) (2022-07-19)
+
+
+### Bug Fixes
+
+* **build:** Only pull the docker image if it exists ([99064fb](https://github.com/entrostat/entro-ci/commit/99064fb40365ae5bd02d30eab6e96687e9b830d3))
+
 ## [4.2.0](https://github.com/entrostat/entro-ci/compare/v4.1.1...v4.2.0) (2022-07-19)
 
 
