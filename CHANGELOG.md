@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.2.0](https://github.com/entrostat/entro-ci/compare/v4.1.1...v4.2.0) (2022-07-19)
+
+
+### Features
+
+* **docker:** Added the ability to check the manifest instead of pulling the whole image ([d4dd6d6](https://github.com/entrostat/entro-ci/commit/d4dd6d684899b5cc15b680b2a621ed5c8547c78d))
+
 ### [4.1.1](https://github.com/entrostat/entro-ci/compare/v4.1.0...v4.1.1) (2022-07-11)
 
 
