@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.3.1](https://github.com/entrostat/entro-ci/compare/v4.3.0...v4.3.1) (2023-02-27)
+
+
+### Bug Fixes
+
+* **devops:** Added the oclif manifest to the gitignore  ([6c03590](https://github.com/entrostat/entro-ci/commit/6c03590ba63709c19477f626126fc2bc83234bd1))
+
 ## [4.3.0](https://github.com/entrostat/entro-ci/compare/v4.2.1...v4.3.0) (2023-02-27)
 
 
