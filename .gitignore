@@ -9,3 +9,4 @@ node_modules
 entro-ci.yaml
 *.test.yaml.hbs
 test.sh
+oclif.manifest.json
