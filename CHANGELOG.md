@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.3.0](https://github.com/entrostat/entro-ci/compare/v4.2.1...v4.3.0) (2023-02-27)
+
+
+### Features
+
+* **tags:** Added the ability to tag an image as latest with a new flag ([23e64f1](https://github.com/entrostat/entro-ci/commit/23e64f15a16975fda833bbf642270c9eb416091f))
+
+
+### Bug Fixes
+
+* **devops:** Removed the publish command because we now need otps ([1958f2a](https://github.com/entrostat/entro-ci/commit/1958f2a161292c9a032e8df401793dd03ca7541f))
+* **devops:** Run prepack during the release cycle ([980564f](https://github.com/entrostat/entro-ci/commit/980564f5eed8cbc76314bd48e1ca3d51ffbc082f))
+
 ### [4.2.1](https://github.com/entrostat/entro-ci/compare/v4.2.0...v4.2.1) (2022-07-19)
 
 
