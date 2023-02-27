@@ -90,8 +90,8 @@
         "prepack": "rm -rf lib && tsc -b && oclif-dev manifest && oclif-dev readme",
         "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
         "version": "oclif-dev readme && git add README.md",
-        "release": "entro-version --during-release-post-hook=\"npm run pack && git commit -am 'Updated the readme'\"",
-        "release:major": "entro-version --standard-version-flags=\"--release-as=major\" --during-release-post-hook=\"npm run pack && git commit -am 'Updated the readme'\""
+        "release": "entro-version --during-release-post-hook=\"npm run prepack && git commit -am 'Updated the readme'\"",
+        "release:major": "entro-version --standard-version-flags=\"--release-as=major\" --during-release-post-hook=\"npm run prepack && git commit -am 'Updated the readme'\""
     },
     "types": "lib/index.d.ts"
 }
