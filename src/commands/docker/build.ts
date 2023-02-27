@@ -13,7 +13,7 @@ export default class DockerBuild extends BuildImageWorkflowBaseCommand {
         `entro-ci docker:build --directory=./backend --image-name=my-repo/my-image --tag=stable`,
         `entro-ci docker:build --directory=./backend --image-name=my-repo/my-image --tag=stable --watch-directory=./backend/src`,
         `entro-ci docker:build --directory=./backend --image-name=my-repo/my-image --tag=stable --watch-directory=./backend/src --watch-directory=./backend/migrations`,
-        `entro-ci docker:build --directory=./backend --image-name=my-repo/my-image --tag=stable --watch-directory=./project/shared --watch-directory=./backend`,
+        `entro-ci docker:build --directory=./backend --image-name=my-repo/my-image --tag=stable --latest --watch-directory=./project/shared --watch-directory=./backend`,
         `entro-ci docker:build --directory=./backend --image-name=my-repo/my-image --tag=stable --watch-directory=./project/shared --watch-directory=./backend --docker-build-flags="--build-arg API_VERSION=v2 --build-arg ENV=prod"`,
         `entro-ci docker:build --directory=./backend --image-name=my-repo/my-image --tag=stable --watch-directory=./project/shared --watch-directory=./backend --docker-build-flags="--build-arg API_VERSION=v2" --docker-build-flags="--build-arg ENV=prod"`,
     ];
@@ -81,6 +81,12 @@ export default class DockerBuild extends BuildImageWorkflowBaseCommand {
             multiple: false,
             description:
                 'The password for logging into the docker repository (mainly for if you are running this build process inside a container)',
+        }),
+        latest: flags.boolean({
+            char: 'l',
+            required: false,
+            default: false,
+            description: 'Whether to push the latest tag to the registry',
         }),
     };
 

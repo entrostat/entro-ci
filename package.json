@@ -1,7 +1,7 @@
 {
     "name": "entro-ci",
     "description": "An automated CI tool to help with building packages and ignoring them when there wasn't a change.",
-    "version": "4.2.1",
+    "version": "4.3.0",
     "author": "Kerren @Kerren-Entrostat",
     "bin": {
         "entro-ci": "./bin/run"
@@ -88,11 +88,10 @@
         "postpack": "rm -f oclif.manifest.json",
         "posttest": "eslint . --ext .ts --config .eslintrc",
         "prepack": "rm -rf lib && tsc -b && oclif-dev manifest && oclif-dev readme",
-        "pack": "npm publish",
         "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
         "version": "oclif-dev readme && git add README.md",
-        "release": "entro-version --during-release-post-hook=\"npm run pack && git commit -am 'Updated the readme'\"",
-        "release:major": "entro-version --standard-version-flags=\"--release-as=major\" --during-release-post-hook=\"npm run pack && git commit -am 'Updated the readme'\""
+        "release": "entro-version --during-release-post-hook=\"npm run prepack && git commit -am 'Updated the readme'\"",
+        "release:major": "entro-version --standard-version-flags=\"--release-as=major\" --during-release-post-hook=\"npm run prepack && git commit -am 'Updated the readme'\""
     },
     "types": "lib/index.d.ts"
 }
