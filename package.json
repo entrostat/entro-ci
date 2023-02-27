@@ -88,7 +88,6 @@
         "postpack": "rm -f oclif.manifest.json",
         "posttest": "eslint . --ext .ts --config .eslintrc",
         "prepack": "rm -rf lib && tsc -b && oclif-dev manifest && oclif-dev readme",
-        "pack": "npm publish",
         "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
         "version": "oclif-dev readme && git add README.md",
         "release": "entro-version --during-release-post-hook=\"npm run pack && git commit -am 'Updated the readme'\"",
