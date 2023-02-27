@@ -37,6 +37,9 @@ export interface BuildFromHashFlags {
 
     // Password for logging into a private repository
     dockerPassword: string;
+
+    // Whether this should be tagged as the latest version
+    latest: boolean;
 }
 
 export abstract class BuildImageWorkflowBaseCommand extends BaseCommand {
@@ -66,10 +69,16 @@ export abstract class BuildImageWorkflowBaseCommand extends BaseCommand {
             //  it to its new tag.
             const existingImageName = generateDockerImageName(flags.imageName, hash, flags.registry);
             await pullDockerImage(hash, flags.imageName, flags.registry, flags.dryRun);
+
+            const tags = flags.tag ? [flags.tag, projectVersion, `${flags.tag}-latest`] : [projectVersion];
+            if (flags.latest) {
+                tags.push('latest');
+            }
+
             await pushDockerImage({
                 localImageName: existingImageName,
                 imageName: flags.imageName,
-                tags: flags.tag ? [flags.tag, projectVersion, `${flags.tag}-latest`] : [projectVersion],
+                tags,
                 registry: flags.registry,
                 dryRun: flags.dryRun,
             });
@@ -107,6 +116,9 @@ export abstract class BuildImageWorkflowBaseCommand extends BaseCommand {
         const tags = [hash];
         if (flags.tag) {
             tags.push(flags.tag);
+        }
+        if (flags.latest) {
+            tags.push('latest');
         }
         return tags;
     }

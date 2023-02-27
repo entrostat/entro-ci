@@ -12,7 +12,7 @@ export default class DockerBuildFromFile extends BuildImageWorkflowBaseCommand {
 
     static examples = [
         `entro-ci docker:build-from-file --image-name=my-repo/my-image --docker-file-path=./backend/Dockerfile --watch-file=./backend/package.json --watch-file=./backend/manifest.json --tag=stable`,
-        `entro-ci docker:build-from-file --image-name=my-repo/my-image --docker-file-path=./backend/Dockerfile --watch-file=./backend/package.json --watch-file=./backend/manifest.json --tag=stable --docker-build-flags="--build-arg API_VERSION=v2"`,
+        `entro-ci docker:build-from-file --image-name=my-repo/my-image --docker-file-path=./backend/Dockerfile --watch-file=./backend/package.json --watch-file=./backend/manifest.json --tag=stable --latest --docker-build-flags="--build-arg API_VERSION=v2"`,
     ];
 
     static flags = {
@@ -74,6 +74,12 @@ export default class DockerBuildFromFile extends BuildImageWorkflowBaseCommand {
             multiple: false,
             description:
                 'The password for logging into the docker repository (mainly for if you are running this build process inside a container)',
+        }),
+        latest: flags.boolean({
+            char: 'l',
+            required: false,
+            default: false,
+            description: 'Whether to push the latest tag to the registry',
         }),
     };
 
