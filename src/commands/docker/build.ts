@@ -3,6 +3,7 @@ import { hashDirectory } from '../../modules/shared/helpers/hash-directory';
 import * as path from 'path';
 import { BuildImageWorkflowBaseCommand } from '../../modules/shared/base-commands/build-image-workflow.base-command';
 import { hashDirectories } from '../../modules/shared/helpers/hash-directories';
+import { hashDirectoriesAndFiles } from '../../modules/shared/helpers/hash-directories-and-files';
 
 export default class DockerBuild extends BuildImageWorkflowBaseCommand {
     static description =
@@ -61,6 +62,12 @@ export default class DockerBuild extends BuildImageWorkflowBaseCommand {
             multiple: true,
             description: `Directories that should be watched to trigger the build. Note, if you set this then it IGNORES the build directory so you'd have to add that here as well.`,
         }),
+        'watch-file': flags.string({
+            char: 'W',
+            required: false,
+            multiple: true,
+            description: `Files that should be watched to trigger the build. Note, if you set this then it IGNORES the build directory so you'd have to add that here as well.`,
+        }),
         'docker-build-flags': flags.string({
             char: 'b',
             required: false,
@@ -97,10 +104,13 @@ export default class DockerBuild extends BuildImageWorkflowBaseCommand {
         const directory = path.resolve(flags.directory);
 
         const watchDirectories = flags['watch-directory'] || [];
+        const watchFiles = flags['watch-file'] || [];
         // We override the hash that's generated depending on whether or not the
         //  watch directories flag has been set.
         const hash =
-            watchDirectories.length > 0 ? await hashDirectories(watchDirectories) : await hashDirectory(directory);
+            watchDirectories.length > 0 || watchFiles.length > 0
+                ? await hashDirectoriesAndFiles(watchDirectories, watchFiles)
+                : await hashDirectory(directory);
 
         const dockerBuildFlags = this.createBuildFlags(flags);
         this.log(`Running with the following options`, dockerBuildFlags);
@@ -114,6 +124,7 @@ export default class DockerBuild extends BuildImageWorkflowBaseCommand {
         flags.dockerFileName = flags['docker-file-name'];
         flags.dryRun = flags['dry-run'];
         flags.watchDirectories = flags['watch-directory'];
+        flags.watchFiles = flags['watch-file'];
         flags.dockerBuildFlags = flags['docker-build-flags'];
         flags.dockerUsername = flags['docker-username'];
         flags.dockerPassword = flags['docker-password'];
