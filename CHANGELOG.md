@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.4.0](https://github.com/entrostat/entro-ci/compare/v4.3.1...v4.4.0) (2023-04-08)
+
+
+### Features
+
+* **build:** Added the ability to watch a file or files in the build command ([60f0260](https://github.com/entrostat/entro-ci/commit/60f0260119cba96d1a79a1ea8ba5a0843a3ce2ef))
+
 ### [4.3.1](https://github.com/entrostat/entro-ci/compare/v4.3.0...v4.3.1) (2023-02-27)
 
 
