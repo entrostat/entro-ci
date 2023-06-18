@@ -19,7 +19,7 @@ $ npm install -g entro-ci
 $ entro-ci COMMAND
 running command...
 $ entro-ci (-v|--version|version)
-entro-ci/4.4.0 linux-x64 node-v16.19.0
+entro-ci/5.0.0 linux-x64 node-v16.19.0
 $ entro-ci --help [COMMAND]
 USAGE
   $ entro-ci COMMAND
@@ -46,6 +46,8 @@ USAGE
   $ entro-ci docker:build
 
 OPTIONS
+  -A, --build-arm                              Whether to build the image for ARM architecture
+
   -P, --docker-password=docker-password        The password for logging into the docker repository (mainly for if you
                                                are running this build process inside a container)
 
@@ -98,7 +100,7 @@ EXAMPLES
   --docker-build-flags="--build-arg ENV=prod"
 ```
 
-_See code: [src/commands/docker/build.ts](https://github.com/entrostat/entro-ci/blob/v4.4.0/src/commands/docker/build.ts)_
+_See code: [src/commands/docker/build.ts](https://github.com/entrostat/entro-ci/blob/v5.0.0/src/commands/docker/build.ts)_
 
 ## `entro-ci docker:build-from-file`
 
@@ -109,6 +111,8 @@ USAGE
   $ entro-ci docker:build-from-file
 
 OPTIONS
+  -A, --build-arm                              Whether to build the image for ARM architecture
+
   -P, --docker-password=docker-password        The password for logging into the docker repository (mainly for if you
                                                are running this build process inside a container)
 
@@ -147,7 +151,7 @@ EXAMPLES
   --docker-build-flags="--build-arg API_VERSION=v2"
 ```
 
-_See code: [src/commands/docker/build-from-file.ts](https://github.com/entrostat/entro-ci/blob/v4.4.0/src/commands/docker/build-from-file.ts)_
+_See code: [src/commands/docker/build-from-file.ts](https://github.com/entrostat/entro-ci/blob/v5.0.0/src/commands/docker/build-from-file.ts)_
 
 ## `entro-ci hash:directory DIRECTORY`
 
@@ -161,7 +165,7 @@ ARGUMENTS
   DIRECTORY  The directory that we're hashing
 ```
 
-_See code: [src/commands/hash/directory.ts](https://github.com/entrostat/entro-ci/blob/v4.4.0/src/commands/hash/directory.ts)_
+_See code: [src/commands/hash/directory.ts](https://github.com/entrostat/entro-ci/blob/v5.0.0/src/commands/hash/directory.ts)_
 
 ## `entro-ci help [COMMAND]`
 
@@ -199,7 +203,7 @@ ALIASES
   $ entro-ci kdu
 ```
 
-_See code: [src/commands/kube/deployment/update.ts](https://github.com/entrostat/entro-ci/blob/v4.4.0/src/commands/kube/deployment/update.ts)_
+_See code: [src/commands/kube/deployment/update.ts](https://github.com/entrostat/entro-ci/blob/v5.0.0/src/commands/kube/deployment/update.ts)_
 
 ## `entro-ci project:version`
 
@@ -216,7 +220,7 @@ EXAMPLE
   entro-ci project:version
 ```
 
-_See code: [src/commands/project/version.ts](https://github.com/entrostat/entro-ci/blob/v4.4.0/src/commands/project/version.ts)_
+_See code: [src/commands/project/version.ts](https://github.com/entrostat/entro-ci/blob/v5.0.0/src/commands/project/version.ts)_
 
 ## `entro-ci templates:update`
 
@@ -240,7 +244,7 @@ EXAMPLES
   entro-ci templates:update -f .templates.yaml
 ```
 
-_See code: [src/commands/templates/update.ts](https://github.com/entrostat/entro-ci/blob/v4.4.0/src/commands/templates/update.ts)_
+_See code: [src/commands/templates/update.ts](https://github.com/entrostat/entro-ci/blob/v5.0.0/src/commands/templates/update.ts)_
 
 ## `entro-ci trigger:post-build`
 
@@ -267,5 +271,5 @@ EXAMPLES
    --all-true
 ```
 
-_See code: [src/commands/trigger/post-build.ts](https://github.com/entrostat/entro-ci/blob/v4.4.0/src/commands/trigger/post-build.ts)_
+_See code: [src/commands/trigger/post-build.ts](https://github.com/entrostat/entro-ci/blob/v5.0.0/src/commands/trigger/post-build.ts)_
 <!-- commandsstop -->

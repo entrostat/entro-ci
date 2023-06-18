@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.0.0](https://github.com/entrostat/entro-ci/compare/v4.4.0...v5.0.0) (2023-06-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* **arm:** Added the ability to build ARM64 containers
+
+### Features
+
+* **arm:** Added the ability to build ARM64 containers ([894ae65](https://github.com/entrostat/entro-ci/commit/894ae6581ffe99c191d6e36b181c4f32d69fddf7)), closes [#7](https://github.com/entrostat/entro-ci/issues/7)
+
 ## [4.4.0](https://github.com/entrostat/entro-ci/compare/v4.3.1...v4.4.0) (2023-04-08)
 
 

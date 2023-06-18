@@ -56,4 +56,8 @@ export class DockerBuildFromBuildFlags {
     @IsBoolean()
     @Expose()
     latest: boolean;
+
+    @IsBoolean()
+    @Expose()
+    buildArm: boolean;
 }
