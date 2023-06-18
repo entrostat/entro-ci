@@ -19,8 +19,10 @@ export async function buildDockerImage({
 }: BuildDockerImageParams) {
     const localDockerImageName = generateDockerImageName(imageName, 'local-build');
     cli.action.start(`Building local image ${localDockerImageName}`);
+    await executeCommand(`docker buildx create --name entro-ci-builder --driver docker-container --bootstrap`, dryRun);
+    await executeCommand(`docker buildx use entro-ci-builder`, dryRun);
     await executeCommand(
-        `cd ${directory} && docker build . -f ${dockerFileName} -t ${localDockerImageName} ${dockerBuildFlags.join(
+        `cd ${directory} && docker buildx build . -f ${dockerFileName} -t ${localDockerImageName} ${dockerBuildFlags.join(
             ' ',
         )}`,
         dryRun,

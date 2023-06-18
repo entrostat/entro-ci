@@ -81,6 +81,12 @@ export default class DockerBuildFromFile extends BuildImageWorkflowBaseCommand {
             default: false,
             description: 'Whether to push the latest tag to the registry',
         }),
+        'build-arm': flags.boolean({
+            char: 'A',
+            required: false,
+            default: false,
+            description: 'Whether to build the image for ARM architecture',
+        }),
     };
 
     static args = [];
@@ -113,6 +119,8 @@ export default class DockerBuildFromFile extends BuildImageWorkflowBaseCommand {
         dockerBuildFromFileFlags.dockerBuildFlags = flags['docker-build-flags'];
         dockerBuildFromFileFlags.dockerUsername = flags['docker-username'];
         dockerBuildFromFileFlags.dockerPassword = flags['docker-password'];
+        dockerBuildFromFileFlags.latest = flags['latest'];
+        dockerBuildFromFileFlags.buildArm = flags['build-arm'];
         return dockerBuildFromFileFlags;
     }
 }

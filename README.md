@@ -46,6 +46,8 @@ USAGE
   $ entro-ci docker:build
 
 OPTIONS
+  -A, --build-arm                              Whether to build the image for ARM architecture
+
   -P, --docker-password=docker-password        The password for logging into the docker repository (mainly for if you
                                                are running this build process inside a container)
 
@@ -109,6 +111,8 @@ USAGE
   $ entro-ci docker:build-from-file
 
 OPTIONS
+  -A, --build-arm                              Whether to build the image for ARM architecture
+
   -P, --docker-password=docker-password        The password for logging into the docker repository (mainly for if you
                                                are running this build process inside a container)
 
