@@ -8,6 +8,7 @@ import { BuildArtefactService, BuildTrigger } from '../services/build-artefact.s
 import { packageJsonVersion } from '../helpers/package-json-version';
 import { dockerLogin } from '../helpers/docker/docker-login';
 import { pullDockerImage } from '../helpers/docker/pull-docker-image';
+import { executeCommand } from '../helpers/execute-command';
 
 export interface BuildFromHashFlags {
     // The name of the image that is pushed to the registry
@@ -56,6 +57,16 @@ export abstract class BuildImageWorkflowBaseCommand extends BaseCommand {
      */
     async buildFromHash(hash: string, directory: string, flags: BuildFromHashFlags) {
         const buildArtifactService = container.resolve(BuildArtefactService);
+        try {
+            await executeCommand(
+                `docker buildx create --name entro-ci-builder --driver docker-container --bootstrap`,
+                flags.dryRun,
+            );
+        } catch (e) {
+            console.error('Error creating builder', ((e as any) || {}).message || e);
+            console.error(`It's likely that the builder already, exists, continuing...`);
+        }
+        await executeCommand(`docker buildx use entro-ci-builder`, flags.dryRun);
         await this.dockerLogin(flags);
         const exists = await this.dockerImageExists(hash, flags);
         const projectVersion = flags.tag
