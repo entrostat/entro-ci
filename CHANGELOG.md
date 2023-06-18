@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.0.4](https://github.com/entrostat/entro-ci/compare/v5.0.3...v5.0.4) (2023-06-18)
+
+
+### Bug Fixes
+
+* **buildx:** Don't need to use buildx for pushing images ([17cc9b3](https://github.com/entrostat/entro-ci/commit/17cc9b33c14fb747fd439574436c41e6dd7562ad))
+
 ### [5.0.3](https://github.com/entrostat/entro-ci/compare/v5.0.2...v5.0.3) (2023-06-18)
 
 
