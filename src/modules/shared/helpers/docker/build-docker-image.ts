@@ -19,7 +19,15 @@ export async function buildDockerImage({
 }: BuildDockerImageParams) {
     const localDockerImageName = generateDockerImageName(imageName, 'local-build');
     cli.action.start(`Building local image ${localDockerImageName}`);
-    await executeCommand(`docker buildx create --name entro-ci-builder --driver docker-container --bootstrap`, dryRun);
+    try {
+        await executeCommand(
+            `docker buildx create --name entro-ci-builder --driver docker-container --bootstrap`,
+            dryRun,
+        );
+    } catch (e) {
+        console.error('Error creating builder', ((e as any) || {}).message);
+        console.error(`It's likely that the builder already, exists, continuing...`);
+    }
     await executeCommand(`docker buildx use entro-ci-builder`, dryRun);
     await executeCommand(
         `cd ${directory} && docker buildx build . -f ${dockerFileName} -t ${localDockerImageName} ${dockerBuildFlags.join(
