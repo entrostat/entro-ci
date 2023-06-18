@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.0.5](https://github.com/entrostat/entro-ci/compare/v5.0.4...v5.0.5) (2023-06-18)
+
+
+### Bug Fixes
+
+* **buildx:** Use buildx for the build but not for pushing ([10fcec8](https://github.com/entrostat/entro-ci/commit/10fcec8b250369d464bc0f115b7b4285de2d3958))
+
 ### [5.0.4](https://github.com/entrostat/entro-ci/compare/v5.0.3...v5.0.4) (2023-06-18)
 
 

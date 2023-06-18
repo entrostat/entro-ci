@@ -20,7 +20,7 @@ export async function buildDockerImage({
     const localDockerImageName = generateDockerImageName(imageName, 'local-build');
     cli.action.start(`Building local image ${localDockerImageName}`);
     await executeCommand(
-        `cd ${directory} && docker build . -f ${dockerFileName} -t ${localDockerImageName} ${dockerBuildFlags.join(
+        `cd ${directory} && docker buildx build . -f ${dockerFileName} -t ${localDockerImageName} ${dockerBuildFlags.join(
             ' ',
         )}`,
         dryRun,
