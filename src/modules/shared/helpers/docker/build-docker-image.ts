@@ -25,7 +25,7 @@ export async function buildDockerImage({
             dryRun,
         );
     } catch (e) {
-        console.error('Error creating builder', ((e as any) || {}).message);
+        console.error('Error creating builder', ((e as any) || {}).message || e);
         console.error(`It's likely that the builder already, exists, continuing...`);
     }
     await executeCommand(`docker buildx use entro-ci-builder`, dryRun);
