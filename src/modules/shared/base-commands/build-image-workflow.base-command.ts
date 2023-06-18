@@ -88,7 +88,7 @@ export abstract class BuildImageWorkflowBaseCommand extends BaseCommand {
             return;
         }
 
-        const dockerBuildFlags = [...flags.dockerBuildFlags];
+        const dockerBuildFlags = [...(flags.dockerBuildFlags || [])];
         if (flags.buildArm) {
             dockerBuildFlags.push(`--platform linux/amd64,linux/arm64`);
         }
