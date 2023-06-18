@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.0.1](https://github.com/entrostat/entro-ci/compare/v5.0.0...v5.0.1) (2023-06-18)
+
+
+### Bug Fixes
+
+* **arm:** If the buildx config already exists, allow it to continue ([60f4fcb](https://github.com/entrostat/entro-ci/commit/60f4fcb93b8027ee9be03d10988fe33f778cb03f))
+
 ## [5.0.0](https://github.com/entrostat/entro-ci/compare/v4.4.0...v5.0.0) (2023-06-18)
 
 
