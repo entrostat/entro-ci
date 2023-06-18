@@ -90,7 +90,7 @@ export abstract class BuildImageWorkflowBaseCommand extends BaseCommand {
 
         const dockerBuildFlags = [...flags.dockerBuildFlags];
         if (flags.buildArm) {
-            dockerBuildFlags.push(`--platform linux/amd64,linux/arm64,linux/arm/v7`);
+            dockerBuildFlags.push(`--platform linux/amd64,linux/arm64`);
         }
         // Build the image locally
         const localImageName = await buildDockerImage({
