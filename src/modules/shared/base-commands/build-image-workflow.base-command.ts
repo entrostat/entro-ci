@@ -40,6 +40,9 @@ export interface BuildFromHashFlags {
 
     // Whether this should be tagged as the latest version
     latest: boolean;
+
+    // Whether to build the ARM version of the image
+    buildArm: boolean;
 }
 
 export abstract class BuildImageWorkflowBaseCommand extends BaseCommand {
@@ -84,13 +87,18 @@ export abstract class BuildImageWorkflowBaseCommand extends BaseCommand {
             });
             return;
         }
+
+        const dockerBuildFlags = [...flags.dockerBuildFlags];
+        if (flags.buildArm) {
+            dockerBuildFlags.push(`--platform linux/amd64,linux/arm64,linux/arm/v7`);
+        }
         // Build the image locally
         const localImageName = await buildDockerImage({
             directory,
             imageName: flags.imageName,
             dryRun: flags.dryRun,
             dockerFileName: flags.dockerFileName,
-            dockerBuildFlags: flags.dockerBuildFlags,
+            dockerBuildFlags,
         });
 
         const additionalTags = flags.tag ? [projectVersion, `${flags.tag}-latest`] : [projectVersion];
