@@ -18,7 +18,7 @@ export async function pushDockerImage({ localImageName, tags, imageName, dryRun,
         const dockerImageName = generateDockerImageName(imageName, tag, registry);
         cli.action.start(`Pushing ${dockerImageName}...`);
         await executeCommand(
-            `docker tag ${localImageName} ${dockerImageName} && docker buildx push ${dockerImageName}`,
+            `docker tag ${localImageName} ${dockerImageName} && docker push ${dockerImageName}`,
             dryRun,
         );
         cli.action.stop();
